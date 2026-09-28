@@ -285,26 +285,35 @@ export const ProductDetailScreen: React.FC = () => {
                 {selectedProduct.description}
               </p>
 
-              {/* Reviews Star Row */}
+              {/* Reviews & Quality Row */}
               <div className="flex items-center gap-3 pt-1">
-                <div className="flex items-center gap-1 bg-white px-3 py-1 rounded-full border-2 border-on-surface shadow-[2px_2px_0_#0f0d5a]">
-                  <div className="flex text-amber-500">
-                    <span className="material-symbols-outlined text-[16px]">star</span>
-                    <span className="material-symbols-outlined text-[16px]">star</span>
-                    <span className="material-symbols-outlined text-[16px]">star</span>
-                    <span className="material-symbols-outlined text-[16px]">star</span>
-                    <span className="material-symbols-outlined text-[16px]">star</span>
-                  </div>
-                  <span className="font-title-md text-xs font-black text-on-surface ml-1">
-                    {selectedProduct.rating}
-                  </span>
-                </div>
-                <a href="#reviews-section" className="font-body-md text-sm text-[#b60055] font-black hover:underline">
-                  {selectedProduct.reviewsCount} Spicy Reviews
-                </a>
+                {reviews.length > 0 ? (
+                  <>
+                    <div className="flex items-center gap-1 bg-white px-3 py-1 rounded-full border-2 border-on-surface shadow-[2px_2px_0_#0f0d5a]">
+                      <div className="flex text-amber-500">
+                        <span className="material-symbols-outlined text-[16px]">star</span>
+                        <span className="material-symbols-outlined text-[16px]">star</span>
+                        <span className="material-symbols-outlined text-[16px]">star</span>
+                        <span className="material-symbols-outlined text-[16px]">star</span>
+                        <span className="material-symbols-outlined text-[16px]">star</span>
+                      </div>
+                      <span className="font-title-md text-xs font-black text-on-surface ml-1">
+                        5.0
+                      </span>
+                    </div>
+                    <a href="#reviews-section" className="font-body-md text-sm text-[#b60055] font-black hover:underline">
+                      {reviews.length} Verified Review{reviews.length > 1 ? 's' : ''}
+                    </a>
+                  </>
+                ) : (
+                  <a href="#reviews-section" className="font-body-md text-xs sm:text-sm text-[#b60055] font-black hover:underline flex items-center gap-1.5 bg-white px-3 py-1 rounded-full border-2 border-on-surface shadow-[2px_2px_0_#0f0d5a]">
+                    <span>✨</span>
+                    <span>New Arrival • Be First To Review</span>
+                  </a>
+                )}
                 <span className="text-gray-400">·</span>
                 <span className="text-xs text-on-surface font-bold flex items-center gap-1">
-                  <span className="w-2 h-2 rounded-full bg-emerald-500" /> Verified Fit
+                  <span className="w-2 h-2 rounded-full bg-emerald-500" /> 100% Combed Cotton
                 </span>
               </div>
             </div>
@@ -336,8 +345,10 @@ export const ProductDetailScreen: React.FC = () => {
                 <button
                   type="button"
                   onClick={() =>
-                    alert(
-                      "MOJADAAR SIZE GUIDE:\n\n• One Size Fits UK 6 - 11 / EU 39 - 45\n• High elastane four-way stretch fits wide and narrow feet seamlessly\n• Reinforced heel tab ensures no slippage inside sneakers."
+                    showToast(
+                      'Size & Fit Guide 📏',
+                      'Free size: Fits UK 6 - 11 (EU 39 - 45) with 4-way comfort stretch.',
+                      '🧦'
                     )
                   }
                   className="text-primary text-xs font-black hover:underline flex items-center gap-1 cursor-pointer"
@@ -647,43 +658,64 @@ export const ProductDetailScreen: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            {reviews.map((rev) => (
-              <div
-                key={rev.id}
-                className="p-5 rounded-3xl bg-white border-3 border-on-surface flex flex-col justify-between gap-4 shadow-[4px_4px_0_#0f0d5a] brutal-card-hover"
-              >
-                <div className="flex flex-col gap-2">
-                  <div className="flex items-center justify-between">
-                    <div className="flex text-amber-500">
-                      {Array.from({ length: rev.rating }).map((_, i) => (
-                        <span key={i} className="material-symbols-outlined text-[16px]">
-                          star
-                        </span>
-                      ))}
+            {reviews.length > 0 ? (
+              reviews.map((rev) => (
+                <div
+                  key={rev.id}
+                  className="p-5 rounded-3xl bg-white border-3 border-on-surface flex flex-col justify-between gap-4 shadow-[4px_4px_0_#0f0d5a] brutal-card-hover"
+                >
+                  <div className="flex flex-col gap-2">
+                    <div className="flex items-center justify-between">
+                      <div className="flex text-amber-500">
+                        {Array.from({ length: rev.rating }).map((_, i) => (
+                          <span key={i} className="material-symbols-outlined text-[16px]">
+                            star
+                          </span>
+                        ))}
+                      </div>
+                      <span className="text-[11px] text-on-surface/60 font-bold">{rev.timeAgo}</span>
                     </div>
-                    <span className="text-[11px] text-on-surface/60 font-bold">{rev.timeAgo}</span>
+                    <p className="font-title-md text-sm font-black text-on-surface">"{rev.title}"</p>
+                    <p className="font-body-md text-xs text-on-surface/70 font-medium">{rev.body}</p>
                   </div>
-                  <p className="font-title-md text-sm font-black text-on-surface">"{rev.title}"</p>
-                  <p className="font-body-md text-xs text-on-surface/70 font-medium">{rev.body}</p>
-                </div>
 
-                <div className="flex items-center gap-2.5 pt-2">
-                  <div
-                    className="w-7 h-7 rounded-full border border-on-surface text-on-surface flex items-center justify-center font-black text-xs"
-                    style={{ backgroundColor: rev.avatarBg }}
-                  >
-                    {rev.avatarLetter}
-                  </div>
-                  <div className="flex flex-col">
-                    <span className="text-xs font-black text-on-surface">{rev.author}</span>
-                    <span className="text-[10px] text-emerald-600 font-bold flex items-center gap-0.5">
-                      <span className="material-symbols-outlined text-[12px]">verified</span>
-                      {rev.location}
-                    </span>
+                  <div className="flex items-center gap-2.5 pt-2">
+                    <div
+                      className="w-7 h-7 rounded-full border border-on-surface text-on-surface flex items-center justify-center font-black text-xs"
+                      style={{ backgroundColor: rev.avatarBg }}
+                    >
+                      {rev.avatarLetter}
+                    </div>
+                    <div className="flex flex-col">
+                      <span className="text-xs font-black text-on-surface">{rev.author}</span>
+                      <span className="text-[10px] text-emerald-600 font-bold flex items-center gap-0.5">
+                        <span className="material-symbols-outlined text-[12px]">verified</span>
+                        {rev.location}
+                      </span>
+                    </div>
                   </div>
                 </div>
+              ))
+            ) : (
+              <div className="col-span-full bg-white p-8 sm:p-10 rounded-3xl border-3 border-on-surface shadow-[4px_4px_0_#0f0d5a] text-center flex flex-col items-center justify-center gap-3">
+                <div className="w-16 h-16 rounded-2xl bg-[#FFEAA0] border-2 border-on-surface flex items-center justify-center text-3xl shadow-[3px_3px_0_#0f0d5a] mb-1">
+                  🧦
+                </div>
+                <h4 className="font-headline-md text-xl uppercase font-black text-on-surface">
+                  Be The First To Review This Pair!
+                </h4>
+                <p className="font-body-md text-sm text-on-surface/70 max-w-md font-medium">
+                  We believe in authentic customer feedback with zero fake reviews. Rock these socks on your feet and drop your real thoughts for fellow sneakerheads!
+                </p>
+                <button
+                  type="button"
+                  onClick={() => setIsWriteReviewOpen(true)}
+                  className="fluid-btn px-6 py-2.5 rounded-full bg-[#FFE200] text-on-surface font-title-md text-xs sm:text-sm uppercase font-black border-2 border-on-surface shadow-[3px_3px_0_#0f0d5a] hover:bg-[#D8005A] hover:text-white cursor-pointer mt-2"
+                >
+                  Write First Review ✍️
+                </button>
               </div>
-            ))}
+            )}
           </div>
         </section>
 
@@ -734,6 +766,32 @@ export const ProductDetailScreen: React.FC = () => {
             </div>
           </div>
         )}
+      </div>
+
+      {/* Sticky Mobile Add To Bag Bar */}
+      <div
+        className="md:hidden fixed bottom-14 left-0 right-0 z-30 bg-[#FFFDF5] border-t-3 border-on-surface px-4 py-2.5 shadow-[0_-3px_0_#0f0d5a] flex items-center justify-between gap-3"
+        style={{ paddingBottom: 'max(0.5rem, env(safe-area-inset-bottom))' }}
+      >
+        <div className="flex flex-col min-w-0">
+          <span className="font-title-md text-xs font-black text-on-surface truncate max-w-[160px]">
+            {selectedProduct.name}
+          </span>
+          <span className="font-headline-md text-sm font-black text-[#b60055]">
+            ₹{currentPrice * qty}
+          </span>
+        </div>
+        <button
+          type="button"
+          onClick={(e) => {
+            addToCart(selectedProduct, currentLengthOption.label, currentPrice, qty, e.currentTarget);
+            triggerConfetti(35);
+          }}
+          className="fluid-btn px-5 py-2 rounded-full bg-[#E4006C] text-white font-title-md text-xs font-black uppercase border-2 border-on-surface shadow-[2px_2px_0_#0f0d5a] flex items-center gap-1.5 active:translate-y-0.5 cursor-pointer shrink-0"
+        >
+          <span className="material-symbols-outlined text-[16px]">add_shopping_cart</span>
+          <span>ADD TO BAG</span>
+        </button>
       </div>
     </div>
   );

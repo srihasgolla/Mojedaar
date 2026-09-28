@@ -21,7 +21,7 @@ export const ToastNotification: React.FC = () => {
   const mainIcon = isDeleteToast ? '🗑️' : (toast.icon || '🧦');
 
   return (
-    <div className="fixed top-24 right-4 sm:right-8 z-[9999] max-w-sm w-full animate-[toastSlideIn_0.35s_cubic-bezier(0.16,1,0.3,1)_both]">
+    <div className="fixed top-18 sm:top-24 left-3 right-3 sm:left-auto sm:right-8 z-[9999] max-w-sm mx-auto sm:mx-0 w-auto sm:w-full animate-[toastSlideIn_0.35s_cubic-bezier(0.16,1,0.3,1)_both]">
       <div
         className={`${
           isDeleteToast ? 'bg-[#FFF0F3]' : 'bg-[#FFEAA0]'

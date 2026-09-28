@@ -19,12 +19,12 @@ export const MarqueeTicker: React.FC<MarqueeTickerProps> = ({
     { text: 'FREE SHIPPING ABOVE ₹999', icon: '⚡' },
     { text: 'MADE IN INDIA WITH ZERO CHILL', icon: '🇮🇳' },
     { text: 'ALL THE SOCKS. ZERO BORING', icon: '🔥' },
-    { text: 'CRISPY ANGRY TOAST ENERGY', icon: '🍞' },
+    { text: '100% MOJADAAR ORIGINAL DRIP', icon: '🧦' },
     { text: 'NO SPAM, ONLY WILD SOCKS', icon: '🌶️' },
   ] : [
     { text: 'KEEP YOUR SOCKS FUNKY', icon: '✨' },
     { text: 'SEAMLESS TOE · COMBED COTTON', icon: '💥' },
-    { text: 'ANGRY TOAST APPROVED DRIP', icon: '🍞' },
+    { text: 'MOJADAAR VERIFIED POP SOCKS', icon: '🧦' },
     { text: 'FITS UK 6-11 ALL DAY', icon: '🚀' },
     { text: 'LOOKING DANGEROUSLY SOCKSY', icon: '😎' },
   ];

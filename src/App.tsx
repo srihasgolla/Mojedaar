@@ -17,12 +17,13 @@ import { SearchModal } from './components/SearchModal';
 import { QuickCartDrawer } from './components/QuickCartDrawer';
 import { CheckoutModal } from './components/CheckoutModal';
 import { CrazyMascotCompanion } from './components/CrazyMascotCompanion';
+import { MobileBottomNav } from './components/MobileBottomNav';
 
 const AppContent: React.FC = () => {
   const { currentScreen } = useCart();
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#FFFDF5] text-on-surface antialiased relative selection:bg-secondary-container selection:text-on-surface">
+    <div className="min-h-screen w-full overflow-x-clip flex flex-col bg-[#FFFDF5] text-on-surface antialiased relative selection:bg-secondary-container selection:text-on-surface pb-16 md:pb-0">
       {/* Dynamic Confetti Canvas */}
       <canvas id="confetti-canvas" className="fixed inset-0 pointer-events-none z-[99999]" />
 
@@ -39,6 +40,9 @@ const AppContent: React.FC = () => {
 
       {/* Global Footer */}
       <Footer />
+
+      {/* Mobile Sticky Bottom Navigation Bar */}
+      <MobileBottomNav />
 
       {/* Interactive Overlays */}
       <ToastNotification />

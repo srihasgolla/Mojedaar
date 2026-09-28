@@ -50,8 +50,8 @@ export const CheckoutModal: React.FC = () => {
   };
 
   return (
-    <div className="fixed inset-0 bg-[#0A0A28]/70 backdrop-blur-md z-[10000] flex items-center justify-center p-4 overflow-y-auto">
-      <div className="bg-[#FFFDF5] border-4 border-on-surface rounded-3xl max-w-xl w-full p-6 sm:p-8 shadow-[8px_8px_0_#0f0d5a] my-8 relative">
+    <div className="fixed inset-0 bg-[#0A0A28]/70 backdrop-blur-md z-[10000] flex items-center justify-center p-3 sm:p-4 overflow-y-auto">
+      <div className="bg-[#FFFDF5] border-3 sm:border-4 border-on-surface rounded-2xl sm:rounded-3xl max-w-xl w-full p-4 sm:p-8 shadow-[6px_6px_0_#0f0d5a] sm:shadow-[8px_8px_0_#0f0d5a] my-4 sm:my-8 relative">
         {orderConfirmed ? (
           <div className="text-center py-6 flex flex-col items-center gap-4 animate-pop-in">
             <div className="w-20 h-20 rounded-full bg-secondary-container border-3 border-on-surface flex items-center justify-center text-4xl shadow-[4px_4px_0_#0f0d5a] animate-bounce">

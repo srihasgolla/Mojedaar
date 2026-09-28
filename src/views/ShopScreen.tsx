@@ -68,10 +68,10 @@ export const ShopScreen: React.FC = () => {
       <section className="w-full bg-[#FFF7D6] py-3 px-4 sm:px-8 border-b-2 border-on-surface">
         <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3 font-label-badge text-xs uppercase tracking-wider text-[#0A0A28]">
           <div className="flex items-center gap-2 font-bold">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#FF0055] animate-ping" />
-            <span className="font-black text-[#e4006c]">4,819 PAIRS DISPATCHED THIS WEEK</span>
+            <span className="w-2.5 h-2.5 rounded-full bg-[#00A86B] animate-ping" />
+            <span className="font-black text-[#e4006c]">100% COMBED COTTON • DESIGNED IN INDIA</span>
             <span className="hidden sm:inline text-gray-400">/</span>
-            <span className="hidden sm:inline font-medium text-on-surface/80">NEXT DISPATCH AT 4:00 PM IST</span>
+            <span className="hidden sm:inline font-medium text-on-surface/80">DISPATCHES WITHIN 24 HOURS</span>
           </div>
           <div className="flex items-center gap-4">
             <span className="flex items-center gap-1 font-black">
@@ -372,24 +372,24 @@ export const ShopScreen: React.FC = () => {
               </button>
             </div>
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-7">
+            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-7">
               {filteredProducts.map((product) => {
                 const wishlisted = isWishlisted(product.id);
                 return (
                   <article
                     key={product.id}
-                    className="product-card brutal-card-hover group relative bg-white rounded-3xl p-4 flex flex-col justify-between border-3 border-on-surface shadow-[4px_4px_0_#0f0d5a] transition-all duration-300"
+                    className="product-card brutal-card-hover group relative bg-white rounded-2xl sm:rounded-3xl p-2.5 sm:p-4 flex flex-col justify-between border-2 sm:border-3 border-on-surface shadow-[3px_3px_0_#0f0d5a] sm:shadow-[4px_4px_0_#0f0d5a] transition-all duration-300"
                   >
                     <div>
                       {/* Image Box */}
                       <div
                         onClick={() => openProduct(product.id)}
-                        className="relative w-full aspect-square rounded-2xl overflow-hidden flex items-center justify-center p-3 border-2 border-on-surface cursor-pointer"
+                        className="relative w-full aspect-square rounded-xl sm:rounded-2xl overflow-hidden flex items-center justify-center p-2 sm:p-3 border-2 border-on-surface cursor-pointer"
                         style={{ backgroundColor: product.bgColor }}
                       >
                         {product.badge && (
                           <span
-                            className={`badge-pop absolute top-2.5 left-2.5 z-10 font-label-badge text-[10px] font-black uppercase px-2.5 py-1 rounded-full border border-on-surface shadow-[1px_1px_0_#0f0d5a] ${
+                            className={`badge-pop absolute top-2 left-2 z-10 font-label-badge text-[9px] sm:text-[10px] font-black uppercase px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full border border-on-surface shadow-[1px_1px_0_#0f0d5a] ${
                               product.badgeType === 'new'
                                 ? 'bg-[#FF0055] text-white'
                                 : product.badgeType === 'bestseller'
@@ -413,14 +413,14 @@ export const ShopScreen: React.FC = () => {
                             e.stopPropagation();
                             toggleWishlist(product.id);
                           }}
-                          className={`absolute top-2.5 right-2.5 z-20 w-9 h-9 rounded-full border-2 border-on-surface shadow-[2px_2px_0_#0f0d5a] flex items-center justify-center transition-all cursor-pointer ${
+                          className={`absolute top-2 right-2 z-20 w-7 h-7 sm:w-9 sm:h-9 rounded-full border-2 border-on-surface shadow-[1.5px_1.5px_0_#0f0d5a] sm:shadow-[2px_2px_0_#0f0d5a] flex items-center justify-center transition-all cursor-pointer ${
                             wishlisted
                               ? 'bg-secondary-container text-[#FF0055] heart-pop'
                               : 'bg-white text-on-surface hover:bg-secondary-container'
                           }`}
                         >
                           <span
-                            className="material-symbols-outlined text-[19px]"
+                            className="material-symbols-outlined text-[16px] sm:text-[19px]"
                             style={{
                               fontVariationSettings: wishlisted ? "'FILL' 1" : "'FILL' 0",
                             }}
@@ -435,73 +435,61 @@ export const ShopScreen: React.FC = () => {
                           className="product-img w-full h-full object-contain mix-blend-multiply transition-transform duration-300"
                         />
 
-                        {/* Angry Toast Style Collectible Stamp Overlay on Hover */}
+                        {/* Collectible Streetwear Stamp Overlay on Hover */}
                         <div className="absolute inset-0 pointer-events-none flex items-center justify-center z-15">
-                          <div className="opacity-0 scale-50 group-hover:opacity-100 group-hover:scale-100 group-hover:rotate-[-8deg] transition-all duration-300 transform bg-[#FFE200] text-[#0f0d5a] font-display-hero text-[11px] font-black uppercase px-3 py-1 rounded-xl border-2 border-[#0f0d5a] shadow-[3px_3px_0_#0f0d5a]">
+                          <div className="opacity-0 scale-50 group-hover:opacity-100 group-hover:scale-100 group-hover:rotate-[-8deg] transition-all duration-300 transform bg-[#FFE200] text-[#0f0d5a] font-display-hero text-[10px] sm:text-[11px] font-black uppercase px-2 sm:px-3 py-1 rounded-xl border-2 border-[#0f0d5a] shadow-[3px_3px_0_#0f0d5a]">
                             {product.category === 'ankle' ? '⚡ ANKLE HEAT' : product.category === 'noshow' ? '👀 GHOST DRIP' : '🔥 CREW SLAP'}
                           </div>
                         </div>
                       </div>
 
                       {/* Product Details */}
-                      <div className="mt-4 flex flex-col gap-1.5 text-left">
-                        <div className="flex items-center justify-between gap-2">
-                          <span className="font-label-badge text-[10px] uppercase font-bold text-on-surface/70 tracking-wider">
+                      <div className="mt-2.5 sm:mt-4 flex flex-col gap-1 text-left">
+                        <div className="flex items-center justify-between gap-1">
+                          <span className="font-label-badge text-[9px] sm:text-[10px] uppercase font-bold text-on-surface/70 tracking-wider truncate">
                             {product.categoryLabel}
                           </span>
-                          <div className="flex items-center gap-0.5 font-label-badge text-[11px] font-black text-on-surface">
-                            <span className="material-symbols-outlined text-[14px] text-amber-500">
-                              star
-                            </span>
-                            <span>{product.rating} ({product.reviewsCount})</span>
-                          </div>
+                          <span className="font-title-md text-[10px] sm:text-xs font-black text-on-surface flex items-center gap-0.5 shrink-0">
+                            ★ {product.rating}
+                          </span>
                         </div>
 
-                        <button
-                          type="button"
+                        <h3
                           onClick={() => openProduct(product.id)}
-                          className="font-title-md text-base font-black text-on-surface group-hover:text-[#e4006c] transition-colors uppercase leading-snug text-left cursor-pointer truncate"
+                          className="font-title-md text-xs sm:text-base uppercase font-black text-on-surface leading-tight hover:text-primary transition-colors cursor-pointer truncate"
                         >
                           {product.name}
-                        </button>
+                        </h3>
 
-                        <p className="font-body-md text-xs text-on-surface/70 truncate">
+                        <p className="font-body-md text-[10px] sm:text-xs text-on-surface/65 font-medium truncate">
                           {product.subtitle}
                         </p>
-                      </div>
-                    </div>
 
-                    {/* Price & Action Button */}
-                    <div className="mt-4 pt-3 flex items-center justify-between border-t border-gray-200 gap-2">
-                      <div className="flex items-baseline gap-1.5 shrink-0">
-                        <span className="font-headline-md text-lg font-black text-[#0f0d5a]">
-                          ₹{product.price}
-                        </span>
-                        {product.originalPrice && (
-                          <span className="text-xs text-gray-400 line-through">
-                            ₹{product.originalPrice}
+                        <div className="flex items-baseline gap-1.5 sm:gap-2 mt-1">
+                          <span className="font-headline-md text-sm sm:text-lg text-[#b60055] font-black">
+                            ₹{product.price}
                           </span>
-                        )}
-                        <span className="font-label-badge text-[10px] text-[#0f0d5a]/60 uppercase font-bold">
-                          MRP
-                        </span>
+                          {product.originalPrice && (
+                            <span className="font-body-md text-[10px] sm:text-xs text-on-surface/50 line-through">
+                              ₹{product.originalPrice}
+                            </span>
+                          )}
+                        </div>
                       </div>
-
-                      <button
-                        type="button"
-                        onClick={(e) => {
-                          addToCart(product, undefined, undefined, 1, e.currentTarget);
-                          triggerConfetti(30);
-                        }}
-                        className="quick-add-btn fluid-btn h-10 px-4 rounded-full bg-[#e4006c] text-white font-title-md text-xs font-black border-2 border-[#0f0d5a] shadow-[2px_2px_0_#0f0d5a] hover:bg-[#b60055] hover:shadow-[4px_4px_0_#0f0d5a] flex items-center gap-1.5 cursor-pointer shrink-0 transition-all hover:scale-105"
-                        aria-label={`Add ${product.name} to cart`}
-                      >
-                        <span className="material-symbols-outlined text-[17px] cart-icon-wiggle">
-                          add_shopping_cart
-                        </span>
-                        <span>ADD</span>
-                      </button>
                     </div>
+
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        addToCart(product, undefined, undefined, 1, e.currentTarget);
+                        triggerConfetti(25);
+                      }}
+                      className="add-btn mt-2.5 sm:mt-3 w-full py-2 sm:py-2.5 rounded-lg sm:rounded-xl bg-[#0f0d5a] text-white font-title-md text-[11px] sm:text-xs uppercase border-2 border-[#0f0d5a] hover:bg-[#e4006c] shadow-[1.5px_1.5px_0_#0f0d5a] sm:shadow-[2px_2px_0_#0f0d5a] flex items-center justify-center gap-1 font-black cursor-pointer transition-all active:translate-y-0.5"
+                      aria-label={`Add ${product.name} to cart`}
+                    >
+                      <span className="material-symbols-outlined text-[15px] sm:text-[16px] cart-icon-wiggle">add_shopping_cart</span>
+                      <span>ADD</span>
+                    </button>
                   </article>
                 );
               })}

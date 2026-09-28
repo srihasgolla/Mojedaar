@@ -21,6 +21,19 @@ interface ParticleData {
   text: string;
 }
 
+export interface CompletedOrder {
+  orderId: string;
+  customerName: string;
+  phone: string;
+  city: string;
+  pincode: string;
+  paymentMethod: string;
+  itemsCount: number;
+  grandTotal: number;
+  items: CartItem[];
+  placedAt: string;
+}
+
 interface CartContextType {
   items: CartItem[];
   itemCount: number;
@@ -47,6 +60,8 @@ interface CartContextType {
   moodIndex: number;
   currentMoodEmoji: string;
   activeMoodFilter: string;
+  lastOrder: CompletedOrder | null;
+  setLastOrder: (order: CompletedOrder | null) => void;
   addToCart: (product: Product, style?: string, price?: number, qty?: number, triggerElem?: HTMLElement | null) => void;
   updateQuantity: (id: string, delta: number) => void;
   removeFromCart: (id: string) => void;
@@ -384,7 +399,8 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
     if (productId) {
       setSelectedProductId(productId);
     }
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    // Instant scroll to top ensures mobile users immediately see top content (especially cart items)
+    window.scrollTo({ top: 0, behavior: 'instant' });
   };
 
   const openProduct = (productId: string) => {

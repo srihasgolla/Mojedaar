@@ -20,8 +20,8 @@ export const SearchModal: React.FC = () => {
   });
 
   return (
-    <div className="fixed inset-0 bg-[#0A0A28]/70 backdrop-blur-sm z-[10000] flex items-start justify-center p-4 pt-20">
-      <div className="bg-[#FFFDF5] border-4 border-on-surface rounded-3xl max-w-2xl w-full p-6 shadow-[8px_8px_0_#0f0d5a] flex flex-col gap-5 max-h-[80vh]">
+    <div className="fixed inset-0 bg-[#0A0A28]/70 backdrop-blur-sm z-[10000] flex items-start justify-center p-3 sm:p-4 pt-10 sm:pt-20">
+      <div className="bg-[#FFFDF5] border-3 sm:border-4 border-on-surface rounded-2xl sm:rounded-3xl max-w-2xl w-full p-4 sm:p-6 shadow-[6px_6px_0_#0f0d5a] sm:shadow-[8px_8px_0_#0f0d5a] flex flex-col gap-4 sm:gap-5 max-h-[88vh] sm:max-h-[80vh]">
         {/* Header */}
         <div className="flex items-center justify-between border-b-2 border-on-surface pb-3">
           <div className="flex items-center gap-2">

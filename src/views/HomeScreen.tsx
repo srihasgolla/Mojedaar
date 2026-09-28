@@ -20,11 +20,11 @@ export const HomeScreen: React.FC = () => {
 
         <div className="max-w-6xl mx-auto relative z-10 flex flex-col items-center text-center">
           {/* Center Floating Stage Container */}
-          <div className="w-full relative flex items-center justify-center min-h-[380px] lg:min-h-[460px] mb-4">
-            {/* LEFT FLOATING BADGE */}
+          <div className="w-full relative flex items-center justify-center min-h-[280px] sm:min-h-[380px] lg:min-h-[460px] mb-2 sm:mb-4">
+            {/* LEFT FLOATING BADGE (Visible on screens >= sm to prevent overlapping center logo) */}
             <div
               onClick={() => openProduct('mirchi-masala')}
-              className="animate-float-left absolute left-2 sm:left-6 md:left-12 lg:left-16 top-10 sm:top-14 z-20 brutal-card-hover cursor-pointer block group"
+              className="hidden sm:block animate-float-left absolute left-2 sm:left-6 md:left-12 lg:left-16 top-10 sm:top-14 z-20 brutal-card-hover cursor-pointer group"
             >
               <div className="w-28 h-28 sm:w-36 sm:h-36 lg:w-44 lg:h-44 bg-[#FFE800] rounded-3xl border-4 border-on-surface shadow-[6px_6px_0_#0f0d5a] p-3 sm:p-4 flex items-center justify-center overflow-hidden transition-transform duration-300 group-hover:rotate-6">
                 <img
@@ -36,10 +36,10 @@ export const HomeScreen: React.FC = () => {
             </div>
 
             {/* CENTER LOGO EMBLEM */}
-            <div className="flex flex-col items-center justify-center animate-gentle-wobble z-10">
+            <div className="flex flex-col items-center justify-center animate-gentle-wobble z-10 px-2 max-w-full">
               <div
                 onClick={() => navigate('shop')}
-                className="relative max-w-[320px] sm:max-w-[420px] lg:max-w-[500px] bg-transparent cursor-pointer group"
+                className="relative max-w-[260px] xs:max-w-[300px] sm:max-w-[420px] lg:max-w-[500px] bg-transparent cursor-pointer group"
               >
                 <img
                   alt="Mojadaar Logo Emblem"
@@ -49,17 +49,17 @@ export const HomeScreen: React.FC = () => {
               </div>
 
               {/* Tilted star decoration behind pill */}
-              <div className="mt-2 inline-flex items-center px-6 py-2 rounded-full bg-[#FFE54C] border-3 border-on-surface shadow-[3px_3px_0_#0f0d5a] hover:rotate-2 transition-transform duration-200">
-                <span className="font-display-hero text-xs sm:text-sm uppercase tracking-wider text-on-surface font-black">
+              <div className="mt-2 inline-flex items-center px-4 sm:px-6 py-1.5 sm:py-2 rounded-full bg-[#FFE54C] border-2 sm:border-3 border-on-surface shadow-[2px_2px_0_#0f0d5a] sm:shadow-[3px_3px_0_#0f0d5a] hover:rotate-2 transition-transform duration-200">
+                <span className="font-display-hero text-[10px] sm:text-sm uppercase tracking-wider text-on-surface font-black">
                   INDIA'S FUNKIEST SOCK UNIVERSE
                 </span>
               </div>
             </div>
 
-            {/* RIGHT FLOATING BADGE */}
+            {/* RIGHT FLOATING BADGE (Visible on screens >= sm) */}
             <div
               onClick={() => openProduct('bijli-stripes')}
-              className="animate-float-right absolute right-2 sm:right-6 md:right-12 lg:right-16 top-6 sm:top-10 z-20 brutal-card-hover cursor-pointer block group"
+              className="hidden sm:block animate-float-right absolute right-2 sm:right-6 md:right-12 lg:right-16 top-6 sm:top-10 z-20 brutal-card-hover cursor-pointer group"
             >
               <div className="w-28 h-28 sm:w-36 sm:h-36 lg:w-44 lg:h-44 bg-[#FFF7E8] rounded-3xl border-4 border-on-surface shadow-[6px_6px_0_#0f0d5a] p-3 sm:p-4 flex items-center justify-center overflow-hidden transition-transform duration-300 group-hover:-rotate-6">
                 <img
@@ -71,9 +71,9 @@ export const HomeScreen: React.FC = () => {
             </div>
           </div>
 
-          {/* MASSIVE NAVY TYPOGRAPHY "BORING SOCKS ARE CANCELLED." */}
-          <div className="w-full max-w-5xl mt-2 mb-4">
-            <h1 className="font-display-hero text-[48px] sm:text-[76px] lg:text-[104px] uppercase text-[#0A0744] tracking-tight leading-[0.9] font-black">
+          {/* MASSIVE NAVY TYPOGRAPHY "BORING SOCKS ARE CANCELLED." - Mobile responsive clamp */}
+          <div className="w-full max-w-5xl mt-2 mb-3 sm:mb-4 px-2">
+            <h1 className="font-display-hero text-[34px] xs:text-[42px] sm:text-[72px] lg:text-[104px] uppercase text-[#0A0744] tracking-tight leading-[0.98] sm:leading-[0.9] font-black break-words">
               BORING SOCKS <br />
               <span className="text-[#b60055] inline-block underline decoration-[#fecf00] decoration-wavy transition-transform hover:scale-105">
                 ARE
@@ -85,22 +85,22 @@ export const HomeScreen: React.FC = () => {
           </div>
 
           {/* Subtitle */}
-          <p className="font-body-lg text-base sm:text-xl text-[#5c3f45] max-w-2xl mb-8 font-medium">
+          <p className="font-body-lg text-sm sm:text-xl text-[#5c3f45] max-w-2xl mb-6 sm:mb-8 font-medium px-4">
             Loud patterns, ridiculous comfort, zero chill. Designed in India for feet with a
             personality problem.
           </p>
 
-          {/* Action Buttons */}
-          <div className="flex flex-wrap items-center justify-center gap-4 mb-14">
+          {/* Action Buttons - Full-width tactile mobile tap targets */}
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 mb-10 sm:mb-14 w-full sm:w-auto px-4 max-w-md sm:max-w-none">
             <button
               onClick={() => navigate('shop')}
-              className="fluid-btn px-8 py-3.5 rounded-full bg-[#b60055] text-white font-title-md text-base uppercase border-3 border-on-surface shadow-[4px_4px_0_#0f0d5a] inline-block font-black cursor-pointer"
+              className="fluid-btn w-full sm:w-auto px-8 py-3.5 rounded-full bg-[#b60055] text-white font-title-md text-sm sm:text-base uppercase border-3 border-on-surface shadow-[3px_3px_0_#0f0d5a] sm:shadow-[4px_4px_0_#0f0d5a] font-black cursor-pointer text-center active:translate-y-0.5"
             >
               SHOP ALL SOCKS
             </button>
             <button
               onClick={() => navigate('shop')}
-              className="fluid-btn px-8 py-3.5 rounded-full bg-white text-on-surface font-title-md text-base uppercase border-3 border-on-surface shadow-[4px_4px_0_#0f0d5a] hover:bg-[#ffe082] inline-flex items-center gap-2 font-black cursor-pointer"
+              className="fluid-btn w-full sm:w-auto px-8 py-3.5 rounded-full bg-white text-on-surface font-title-md text-sm sm:text-base uppercase border-3 border-on-surface shadow-[3px_3px_0_#0f0d5a] sm:shadow-[4px_4px_0_#0f0d5a] hover:bg-[#ffe082] inline-flex items-center justify-center gap-2 font-black cursor-pointer active:translate-y-0.5"
             >
               EXPLORE SOCKS 🧦
             </button>
@@ -249,7 +249,7 @@ export const HomeScreen: React.FC = () => {
                 RIGHT NOW.
               </h2>
               <p className="font-body-md text-sm text-[#231b00] mt-1 font-semibold">
-                Swipe through the pairs flying out of our warehouse in Mumbai this week.
+                Swipe through our freshest signature designs, crafted for pure ankle confidence.
               </p>
             </div>
             <button
@@ -261,12 +261,12 @@ export const HomeScreen: React.FC = () => {
             </button>
           </div>
 
-          {/* 6 Real Product Cards Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-5">
+          {/* 6 Real Product Cards Grid - 2 columns on mobile */}
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-3 sm:gap-5">
             {homepageProducts.map((product) => (
               <div
                 key={product.id}
-                className="bg-white rounded-3xl border-3 border-on-surface p-3 shadow-[5px_5px_0_#0f0d5a] flex flex-col justify-between group product-card"
+                className="bg-white rounded-2xl sm:rounded-3xl border-2 sm:border-3 border-on-surface p-2.5 sm:p-3 shadow-[3px_3px_0_#0f0d5a] sm:shadow-[5px_5px_0_#0f0d5a] flex flex-col justify-between group product-card"
               >
                 <div>
                   <div
@@ -280,7 +280,7 @@ export const HomeScreen: React.FC = () => {
                       className="w-full h-full object-cover mix-blend-multiply product-img transition-transform duration-300"
                     />
 
-                    {/* Collectible Streetwear Stamp - Pops in on hover just like Angry Toast */}
+                    {/* Collectible Streetwear Stamp - Pops in on hover */}
                     <div className="absolute inset-0 pointer-events-none flex items-center justify-center z-15">
                       <div className="opacity-0 scale-50 group-hover:opacity-100 group-hover:scale-100 group-hover:rotate-[-8deg] transition-all duration-300 transform bg-[#FFE200] text-[#0f0d5a] font-display-hero text-[11px] font-black uppercase px-2.5 py-1 rounded-xl border-2 border-[#0f0d5a] shadow-[3px_3px_0_#0f0d5a]">
                         {product.badge || '🔥 100% DRIP'}
@@ -408,32 +408,86 @@ export const HomeScreen: React.FC = () => {
             />
           </div>
 
-          {/* Testimonials */}
+          {/* The Mojadaar Craft & Quality Guarantee */}
           <div className="w-full max-w-5xl">
-            <h3 className="font-headline-lg text-2xl uppercase text-[#FFF7D6] mb-6 text-center font-black">
-              People are obsessed.
+            <h3 className="font-headline-lg text-2xl uppercase text-[#FFF7D6] mb-2 text-center font-black">
+              Why Our Socks Hit Different
             </h3>
+            <p className="font-body-md text-sm text-center text-white/90 font-medium mb-8 max-w-xl mx-auto">
+              No cheap polyester. No boring colors. Built stitch-by-stitch for uncompromising comfort.
+            </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-5 text-on-surface">
               <div className="bg-[#FFF7D6] p-5 rounded-3xl border-3 border-on-surface shadow-[5px_5px_0_#0f0d5a] flex flex-col justify-between brutal-card-hover">
-                <p className="font-title-md text-sm sm:text-base italic mb-4 font-semibold text-on-surface">
-                  “I bought these for myself and now everyone keeps asking where they're from.”
-                </p>
-                <div className="text-[#725c00] font-black tracking-widest text-sm">★★★★★</div>
+                <div>
+                  <div className="w-12 h-12 rounded-2xl bg-[#FFE200] border-2 border-on-surface flex items-center justify-center text-2xl mb-3 shadow-[2px_2px_0_#0f0d5a]">
+                    🪡
+                  </div>
+                  <h4 className="font-headline-md text-lg uppercase font-black text-on-surface mb-1">
+                    200-Needle Cotton
+                  </h4>
+                  <p className="font-body-md text-sm text-on-surface/80 font-medium leading-relaxed">
+                    Ultra-dense knit using 100% combed cotton. Feather-soft on skin with zero friction or pilling.
+                  </p>
+                </div>
+                <div className="mt-4 pt-3 border-t-2 border-on-surface/10 font-label-badge text-xs font-black uppercase text-[#e4006c]">
+                  ✓ Breathable & Soft
+                </div>
               </div>
 
               <div className="bg-white p-5 rounded-3xl border-3 border-on-surface shadow-[5px_5px_0_#0f0d5a] flex flex-col justify-between brutal-card-hover">
-                <p className="font-title-md text-sm sm:text-base italic mb-4 font-semibold text-on-surface">
-                  “Finally, socks with a personality. Fits great, hasn't shrunk after multiple washes!”
-                </p>
-                <div className="text-[#725c00] font-black tracking-widest text-sm">★★★★★</div>
+                <div>
+                  <div className="w-12 h-12 rounded-2xl bg-[#ffd9e0] border-2 border-on-surface flex items-center justify-center text-2xl mb-3 shadow-[2px_2px_0_#0f0d5a]">
+                    ⚓
+                  </div>
+                  <h4 className="font-headline-md text-lg uppercase font-black text-on-surface mb-1">
+                    Y-Gore Anti-Slip
+                  </h4>
+                  <p className="font-body-md text-sm text-on-surface/80 font-medium leading-relaxed">
+                    Deep anatomical heel pocket hugs your ankle snug. Absolutely zero sliding down your sneakers.
+                  </p>
+                </div>
+                <div className="mt-4 pt-3 border-t-2 border-on-surface/10 font-label-badge text-xs font-black uppercase text-[#e4006c]">
+                  ✓ Zero Slippage
+                </div>
               </div>
 
               <div className="bg-[#ffe082] p-5 rounded-3xl border-3 border-on-surface shadow-[5px_5px_0_#0f0d5a] flex flex-col justify-between brutal-card-hover">
-                <p className="font-title-md text-sm sm:text-base italic mb-4 font-semibold text-on-surface">
-                  “My feet have never received this much attention. Total conversation starter.”
-                </p>
-                <div className="text-[#725c00] font-black tracking-widest text-sm">★★★★★</div>
+                <div>
+                  <div className="w-12 h-12 rounded-2xl bg-white border-2 border-on-surface flex items-center justify-center text-2xl mb-3 shadow-[2px_2px_0_#0f0d5a]">
+                    🌶️
+                  </div>
+                  <h4 className="font-headline-md text-lg uppercase font-black text-on-surface mb-1">
+                    Vibrant Jacquard
+                  </h4>
+                  <p className="font-body-md text-sm text-on-surface/80 font-medium leading-relaxed">
+                    Woven with pre-dyed saturated yarns. Colors stay screaming bright even after 50+ wash cycles.
+                  </p>
+                </div>
+                <div className="mt-4 pt-3 border-t-2 border-on-surface/10 font-label-badge text-xs font-black uppercase text-[#e4006c]">
+                  ✓ Fade Resistant
+                </div>
               </div>
+            </div>
+
+            {/* Interactive Feedback & Rating Callout */}
+            <div className="mt-8 bg-white/10 backdrop-blur-sm p-4 sm:p-6 rounded-3xl border-3 border-white/30 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+              <div className="flex items-center gap-3">
+                <span className="text-3xl sm:text-4xl animate-bounce">🧦</span>
+                <div>
+                  <h4 className="font-headline-md text-base sm:text-lg font-black uppercase text-[#FFF7D6]">
+                    Rate Your Mojadaar Experience!
+                  </h4>
+                  <p className="font-body-md text-xs sm:text-sm text-white/90">
+                    How many socks would you rate us? Tell our designers on the official Sock-O-Meter.
+                  </p>
+                </div>
+              </div>
+              <button
+                onClick={() => navigate('feedback')}
+                className="fluid-btn px-6 py-2.5 rounded-full bg-[#FFE200] text-on-surface font-title-md text-xs sm:text-sm uppercase font-black border-2 border-on-surface shadow-[3px_3px_0_#0f0d5a] hover:bg-white shrink-0 cursor-pointer"
+              >
+                Open Sock-O-Meter 🧦
+              </button>
             </div>
           </div>
         </div>

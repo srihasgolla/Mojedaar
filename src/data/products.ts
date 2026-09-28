@@ -306,44 +306,7 @@ export const PRODUCTS: Product[] = [
   },
 ];
 
-export const DEMO_REVIEWS: Review[] = [
-  {
-    id: 'rev-1',
-    author: 'Kabir M.',
-    location: 'Bandra West, Mumbai',
-    rating: 5,
-    title: 'Literally stopped 3 people in Bandra',
-    body: 'The mirchi embroidery is so crisp and vibrant. Rocked them with white Air Force 1s and cuffed selvedge denim. Incredible cotton softness.',
-    timeAgo: 'Yesterday',
-    verified: true,
-    avatarLetter: 'K',
-    avatarBg: '#fecf00',
-  },
-  {
-    id: 'rev-2',
-    author: 'Ananya D.',
-    location: 'Indiranagar, Bengaluru',
-    rating: 5,
-    title: 'No sweat, zero slippage down the ankle',
-    body: 'Normally fun socks are cheap nylon, but these are legit heavy-gauge combed cotton. Elastic cuff stays up even through 10,000 steps.',
-    timeAgo: '3 days ago',
-    verified: true,
-    avatarLetter: 'A',
-    avatarBg: '#ffd9e0',
-  },
-  {
-    id: 'rev-3',
-    author: 'Rohan S.',
-    location: 'South Delhi, Delhi',
-    rating: 5,
-    title: 'Packaging itself is a collectible',
-    body: 'The unboxing experience with the holographic Mojadaar stickers and spice packet card had me smiling. Already ordered 3 more pairs.',
-    timeAgo: '1 week ago',
-    verified: true,
-    avatarLetter: 'R',
-    avatarBg: '#FFF7D6',
-  },
-];
+export const DEMO_REVIEWS: Review[] = [];
 
 export const MOODS = [
   { id: 'colour', label: 'Colour Obsessed', emoji: '🌈', colorBg: '#b60055', shadowColor: '#fecf00', textColor: '#ffffff' },

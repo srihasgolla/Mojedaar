@@ -11,16 +11,19 @@
 }
 
 @layer base {
-  html, body {
-    margin: 0;
-    padding: 0;
+  html {
     scroll-behavior: smooth;
     background-color: #FFFDF5;
     color: #0f0d5a;
     font-family: 'Rubik', 'Fredoka', sans-serif;
+    -webkit-tap-highlight-color: transparent;
   }
   body {
-    overscroll-behavior: none;
+    margin: 0;
+    padding: 0;
+    background-color: #FFFDF5;
+    color: #0f0d5a;
+    min-height: 100vh;
   }
 }
 
@@ -120,7 +123,7 @@
   50% { transform: rotate(4deg) scale(1.05); }
 }
 
-/* Angry Toast Style Crazy Floating Animations */
+/* Funky Pop Style Crazy Floating Animations */
 @keyframes crazyBob1 {
   0%, 100% { transform: translateY(0px) rotate(-6deg) scale(1); }
   50% { transform: translateY(-14px) rotate(4deg) scale(1.08); }

@@ -15,14 +15,14 @@ interface StickerItem {
 
 const STICKERS: StickerItem[] = [
   {
-    id: 'toast-drip',
-    icon: '🍞',
-    badgeText: 'ANGRY & CRISPY',
+    id: 'mojadaar-drip',
+    icon: '🧦',
+    badgeText: '100% MOJADAAR',
     subtitle: 'No boring feet allowed',
     defaultPosition: 'top-20 -left-4 md:-left-8',
     rotate: '-rotate-12',
     animationClass: 'animate-crazy-bob-1',
-    speechText: 'Butter my ankles, these socks slap! 🧈',
+    speechText: 'Certified 100% Combed Cotton Drip! 🧦✨',
     color: '#FFE200',
   },
   {

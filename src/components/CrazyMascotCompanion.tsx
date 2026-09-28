@@ -3,7 +3,7 @@ import { useCart } from '../context/CartContext';
 
 const RANDOM_BANTER = [
   "Life is too short for boring socks! 🧦",
-  "Angry Toast approved 100% drip! 🍞⚡",
+  "100% Mojadaar Certified Funky! 🧦⚡",
   "Your ankles are about to be legendary! 🚀",
   "Zero chill, maximum comfort! 😎",
   "Pairs so loud your shoes will blush! 💥",
@@ -12,30 +12,30 @@ const RANDOM_BANTER = [
 
 export const CrazyMascotCompanion: React.FC = () => {
   const { itemCount, currentScreen, triggerConfetti } = useCart();
-  const [speech, setSpeech] = useState<string>("Butter my ankles, let's shop! 🍞✨");
-  const [isMinimized, setIsMinimized] = useState(false);
+  const [speech, setSpeech] = useState<string>("Funky ankles only, let's shop! 🧦✨");
+  const [isMinimized, setIsMinimized] = useState(() => typeof window !== 'undefined' && window.innerWidth < 768);
   const [isDancing, setIsDancing] = useState(false);
-  const [bubbleVisible, setBubbleVisible] = useState(true);
+  const [bubbleVisible, setBubbleVisible] = useState(false);
 
   // React to cart items changing
   useEffect(() => {
-    if (itemCount > 0) {
+    if (itemCount > 0 && !isMinimized) {
       setSpeech(`WOOO! ${itemCount} pair${itemCount > 1 ? 's' : ''} in the bag! Keep it rollin'! 🔥`);
       setBubbleVisible(true);
       const t = setTimeout(() => setBubbleVisible(false), 5000);
       return () => clearTimeout(t);
     }
-  }, [itemCount]);
+  }, [itemCount, isMinimized]);
 
   // React to screen changing
   useEffect(() => {
-    if (currentScreen === 'shop') {
+    if (currentScreen === 'shop' && !isMinimized) {
       setSpeech("Fresh drip alert! Find your funky pair! 🧦⚡");
       setBubbleVisible(true);
       const t = setTimeout(() => setBubbleVisible(false), 4000);
       return () => clearTimeout(t);
     }
-  }, [currentScreen]);
+  }, [currentScreen, isMinimized]);
 
   const handleMascotClick = () => {
     setIsDancing(true);
@@ -51,8 +51,8 @@ export const CrazyMascotCompanion: React.FC = () => {
 
   return (
     <aside
-      aria-label="Funky mascot companion"
-      className="fixed bottom-5 right-5 z-40 flex flex-col items-end select-none pointer-events-auto"
+      aria-label="Funky sock mascot companion"
+      className="fixed bottom-16 right-3 sm:bottom-5 sm:right-5 z-30 flex flex-col items-end select-none pointer-events-auto"
     >
       {/* Speech Bubble */}
       {!isMinimized && bubbleVisible && (
@@ -80,7 +80,7 @@ export const CrazyMascotCompanion: React.FC = () => {
 
       {/* Mascot Character & Minimized Toggle */}
       <div className="flex items-center gap-2">
-        {/* Toast Character Mascot Button */}
+        {/* Sock Mascot Button */}
         <button
           type="button"
           onClick={handleMascotClick}
@@ -88,12 +88,16 @@ export const CrazyMascotCompanion: React.FC = () => {
           className={`relative group cursor-pointer transition-transform duration-300 focus:outline-none ${
             isDancing ? 'animate-mascot-backflip' : 'hover:scale-110 hover:-rotate-6'
           }`}
-          title="Click Moji the Toastie for crazy confetti!"
+          title="Click Moji the Sock for crazy confetti!"
         >
           {/* Mascot Body Container */}
           <div className="w-16 h-16 sm:w-18 sm:h-18 bg-[#FFE200] rounded-2xl border-3 border-[#0f0d5a] shadow-[4px_4px_0_#0f0d5a] p-2 flex flex-col items-center justify-between relative overflow-hidden transition-all group-hover:bg-[#FFD900] group-hover:shadow-[6px_6px_0_#0f0d5a]">
-            {/* Angry Toast Crust Top Arc */}
-            <div className="w-10 h-3 bg-[#E5B500] rounded-t-full border-2 border-[#0f0d5a] -mt-1" />
+            {/* Ribbed Sock Cuff Top Arc */}
+            <div className="w-11 h-3 bg-[#E4006C] rounded-t-lg border-2 border-[#0f0d5a] -mt-1 flex items-center justify-evenly px-0.5">
+              <div className="w-0.5 h-full bg-white" />
+              <div className="w-0.5 h-full bg-[#FFE200]" />
+              <div className="w-0.5 h-full bg-white" />
+            </div>
 
             {/* Cool Sunglasses & Cute Eyes */}
             <div className="w-full flex items-center justify-center gap-1 my-auto">
@@ -129,7 +133,7 @@ export const CrazyMascotCompanion: React.FC = () => {
 
           {/* Drip Tag Pill */}
           <div className="absolute -bottom-2 -left-2 bg-[#E4006C] text-white font-label-badge text-[9px] font-black uppercase px-2 py-0.5 rounded-full border border-[#0f0d5a] shadow-[1px_1px_0_#0f0d5a] rotate-[-6deg] group-hover:rotate-0 transition-transform">
-            MOJI 🍞
+            MOJI 🧦
           </div>
         </button>
 

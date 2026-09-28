@@ -1,0 +1,285 @@
+@import "tailwindcss";
+
+@theme {
+  --color-on-surface: #0f0d5a;
+  --color-on-surface-variant: #5c3f45;
+  --color-primary: #e4006c;
+  --color-primary-container: #ffd9e0;
+  --color-secondary-container: #ffe200;
+  --color-canvas-cream: #FFFDF5;
+  --color-sticker-white: #ffffff;
+}
+
+@layer base {
+  html, body {
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    background-color: #FFFDF5;
+    color: #0f0d5a;
+    font-family: 'Rubik', 'Fredoka', sans-serif;
+  }
+  body {
+    overscroll-behavior: none;
+  }
+}
+
+/* Custom Font Family Utilities */
+.font-display-hero {
+  font-family: 'Archivo Black', 'Archivo Narrow', 'Rubik', sans-serif;
+}
+.font-headline-xl {
+  font-family: 'Archivo Black', 'Archivo Narrow', sans-serif;
+}
+.font-headline-lg {
+  font-family: 'Archivo Black', 'Archivo Narrow', sans-serif;
+}
+.font-headline-md {
+  font-family: 'Archivo Black', 'Rubik', sans-serif;
+}
+.font-title-md {
+  font-family: 'Rubik', 'Fredoka', sans-serif;
+}
+.font-body-lg {
+  font-family: 'Rubik', 'Fredoka', sans-serif;
+}
+.font-body-md {
+  font-family: 'Rubik', 'Fredoka', sans-serif;
+}
+.font-label-ticker {
+  font-family: 'Archivo Black', 'Archivo Narrow', sans-serif;
+}
+.font-label-badge {
+  font-family: 'Fredoka', 'Rubik', sans-serif;
+}
+
+/* Infinite Continuous Marquee Keyframes */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes marquee-reverse {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0%); }
+}
+
+.animate-marquee-infinite {
+  display: flex;
+  width: max-content;
+  animation: marquee 16s linear infinite;
+}
+.animate-marquee-reverse {
+  display: flex;
+  width: max-content;
+  animation: marquee-reverse 18s linear infinite;
+}
+.animate-marquee-infinite:hover,
+.animate-marquee-reverse:hover {
+  animation-play-state: paused;
+}
+
+/* Organic Floating & Wiggle Physics */
+@keyframes floaty {
+  0%, 100% { transform: translateY(0px) rotate(-6deg) scale(1); }
+  50% { transform: translateY(-16px) rotate(-2deg) scale(1.04); }
+}
+
+@keyframes floaty-right {
+  0%, 100% { transform: translateY(0px) rotate(6deg) scale(1); }
+  50% { transform: translateY(-18px) rotate(10deg) scale(1.04); }
+}
+
+@keyframes gentleWiggle {
+  0%, 100% { transform: rotate(-2deg) scale(1); }
+  50% { transform: rotate(2deg) scale(1.02); }
+}
+
+@keyframes badgeWiggle {
+  0%, 100% { transform: rotate(-3deg) scale(1); }
+  50% { transform: rotate(-1deg) scale(1.04); }
+}
+
+@keyframes badgeBounce {
+  0%, 100% { transform: rotate(2deg) scale(1); }
+  50% { transform: rotate(4deg) scale(1.05); }
+}
+
+.animate-float-left {
+  animation: floaty 4s ease-in-out infinite;
+}
+
+.animate-float-right {
+  animation: floaty-right 4.5s ease-in-out infinite;
+}
+
+.animate-gentle-wobble {
+  animation: gentleWiggle 3.2s ease-in-out infinite;
+}
+
+.animate-badge-wiggle {
+  animation: badgeWiggle 3s ease-in-out infinite;
+}
+
+.animate-badge-bounce {
+  animation: badgeBounce 2.5s ease-in-out infinite;
+}
+
+/* Neo-Brutalist Micro-Interactions & Hover Pops */
+.brutal-card-hover {
+  transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.22s ease, border-color 0.2s ease;
+}
+.brutal-card-hover:hover {
+  transform: translate(-5px, -5px) rotate(-0.5deg);
+  box-shadow: 8px 8px 0px #0f0d5a !important;
+}
+
+.product-card {
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+}
+.product-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 8px 8px 0px #0f0d5a !important;
+}
+.product-card:hover .product-img {
+  transform: scale(1.08) rotate(1.5deg);
+}
+.product-card:hover .badge-pop {
+  transform: scale(1.15) rotate(-6deg);
+}
+
+.badge-pop {
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Tactile 3D Button Physics */
+.fluid-btn {
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  user-select: none;
+}
+.fluid-btn:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 6px 6px 0 #0f0d5a;
+}
+.fluid-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 #0f0d5a;
+}
+
+.add-btn {
+  background-color: #0f0d5a;
+  color: #ffffff;
+  transition: all 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  overflow: visible;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.add-btn:hover {
+  background-color: #e4006c !important;
+  color: #ffffff !important;
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 #0f0d5a;
+}
+.add-btn:active {
+  transform: translate(2px, 2px) scale(0.96);
+  box-shadow: 0px 0px 0 #0f0d5a;
+}
+
+.icon-bounce {
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.icon-bounce:hover {
+  transform: translate(-3px, -3px) rotate(-4deg);
+  box-shadow: 5px 5px 0 #0f0d5a;
+}
+.icon-bounce:active {
+  transform: translate(1px, 1px) scale(0.92);
+  box-shadow: 1px 1px 0 #0f0d5a;
+}
+
+/* Mood Grid High-Energy Pop */
+.brutal-mood-card {
+  transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.22s ease, filter 0.2s ease;
+  position: relative;
+}
+.brutal-mood-card:hover {
+  transform: translateY(-8px) scale(1.05) rotate(0.8deg);
+  box-shadow: 8px 8px 0px #ffffff !important;
+  z-index: 10;
+}
+.brutal-mood-card:active {
+  transform: scale(0.97);
+}
+.brutal-mood-card:hover .mood-emoji {
+  transform: scale(1.35) rotate(-10deg);
+}
+.mood-emoji {
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  display: inline-block;
+}
+
+/* Electric Shimmer CTA */
+@keyframes electricShimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.electric-shimmer-btn {
+  background: linear-gradient(90deg, #FFE043 0%, #FFF385 25%, #FFE043 50%, #FFB800 75%, #FFE043 100%);
+  background-size: 200% 100%;
+  animation: electricShimmer 3.5s linear infinite;
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.electric-shimmer-btn:hover {
+  animation-duration: 1.5s;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 #0f0d5a;
+}
+.electric-shimmer-btn:active {
+  transform: translateY(2px) scale(0.98);
+  box-shadow: 0 1px 0 #0f0d5a;
+}
+
+/* Glow Pulse for Checkout CTA */
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 6px 0 #0f0d5a, 0 0 0 rgba(228,0,108,0); }
+  50% { box-shadow: 0 8px 0 #0f0d5a, 0 0 20px rgba(228,0,108,0.5); }
+}
+.btn-glow-pulse {
+  animation: glowPulse 2.4s infinite;
+}
+
+/* Wishlist Heart Burst */
+@keyframes heartBurst {
+  0% { transform: scale(0.8); }
+  45% { transform: scale(1.45) rotate(-15deg); }
+  80% { transform: scale(0.95) rotate(5deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+.heart-pop {
+  animation: heartBurst 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Header cart badge celebration pop */
+@keyframes cartCelebration {
+  0% { transform: scale(1); }
+  25% { transform: scale(1.75) rotate(-14deg); background-color: #FF0055; color: #FFF; }
+  50% { transform: scale(1.5) rotate(12deg); }
+  75% { transform: scale(1.2) rotate(-5deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+.cart-bounce-anim {
+  animation: cartCelebration 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Logo Multiply Blending */
+.logo-blend-multiply {
+  mix-blend-mode: multiply;
+}
+
+/* Custom Scrollbar hiding */
+::-webkit-scrollbar {
+  display: none;
+}

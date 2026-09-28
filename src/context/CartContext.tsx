@@ -279,6 +279,12 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   const updateQuantity = (id: string, delta: number) => {
+    const targetItem = items.find((i) => i.id === id);
+    if (targetItem && targetItem.quantity + delta <= 0) {
+      removeFromCart(id);
+      return;
+    }
+
     setItems((prev) => {
       return prev
         .map((item) => {
@@ -296,13 +302,33 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
     const item = items.find((i) => i.id === id);
     setItems((prev) => prev.filter((i) => i.id !== id));
     if (item) {
-      showToast('Removed from Bag', `${item.name} removed`, '🗑️');
+      showToast(
+        'Socks Removed',
+        `${item.name} moved to trash`,
+        '🗑️',
+        'UNDO',
+        () => {
+          setItems((prev) => [...prev, item]);
+          showToast('Restored! 🎉', `${item.name} added back to bag!`, item.icon || '🧦');
+        }
+      );
     }
   };
 
   const clearCart = () => {
+    if (items.length === 0) return;
+    const previousItems = [...items];
     setItems([]);
-    showToast('Bag Cleared', 'Add some fresh loud pairs!', '🧹');
+    showToast(
+      'Bag Cleared',
+      'All funky socks moved to trash',
+      '🗑️',
+      'UNDO',
+      () => {
+        setItems(previousItems);
+        showToast('Restored! 🎉', 'All socks added back to bag!', '🧦');
+      }
+    );
   };
 
   const applyPromoCode = (code: string) => {

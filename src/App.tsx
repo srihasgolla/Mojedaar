@@ -16,6 +16,7 @@ import { FlyingParticleLayer } from './components/FlyingParticleLayer';
 import { SearchModal } from './components/SearchModal';
 import { QuickCartDrawer } from './components/QuickCartDrawer';
 import { CheckoutModal } from './components/CheckoutModal';
+import { CrazyMascotCompanion } from './components/CrazyMascotCompanion';
 
 const AppContent: React.FC = () => {
   const { currentScreen } = useCart();
@@ -45,6 +46,7 @@ const AppContent: React.FC = () => {
       <SearchModal />
       <QuickCartDrawer />
       <CheckoutModal />
+      <CrazyMascotCompanion />
     </div>
   );
 };

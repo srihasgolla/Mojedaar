@@ -4,7 +4,7 @@ import { PRODUCTS, BRAND_LOGOS, LIFESTYLE_IMAGES, MOODS } from '../data/products
 import { MarqueeTicker } from '../components/MarqueeTicker';
 
 export const HomeScreen: React.FC = () => {
-  const { navigate, openProduct, addToCart, setMoodFilter } = useCart();
+  const { navigate, openProduct, addToCart, setMoodFilter, triggerConfetti } = useCart();
   const homepageProducts = PRODUCTS.slice(0, 6);
 
   return (
@@ -279,6 +279,14 @@ export const HomeScreen: React.FC = () => {
                       src={product.image}
                       className="w-full h-full object-cover mix-blend-multiply product-img transition-transform duration-300"
                     />
+
+                    {/* Collectible Streetwear Stamp - Pops in on hover just like Angry Toast */}
+                    <div className="absolute inset-0 pointer-events-none flex items-center justify-center z-15">
+                      <div className="opacity-0 scale-50 group-hover:opacity-100 group-hover:scale-100 group-hover:rotate-[-8deg] transition-all duration-300 transform bg-[#FFE200] text-[#0f0d5a] font-display-hero text-[11px] font-black uppercase px-2.5 py-1 rounded-xl border-2 border-[#0f0d5a] shadow-[3px_3px_0_#0f0d5a]">
+                        {product.badge || '🔥 100% DRIP'}
+                      </div>
+                    </div>
+
                     {product.badge && (
                       <span
                         className={`badge-pop absolute top-2 left-2 font-label-badge text-[10px] uppercase px-2 py-0.5 rounded-full border border-on-surface font-extrabold shadow-[1px_1px_0_#0f0d5a] ${
@@ -328,11 +336,14 @@ export const HomeScreen: React.FC = () => {
 
                 <button
                   type="button"
-                  onClick={(e) => addToCart(product, undefined, undefined, 1, e.currentTarget)}
-                  className="add-btn mt-3 w-full py-2.5 rounded-xl bg-[#0f0d5a] text-white font-title-md text-xs uppercase border-2 border-[#0f0d5a] hover:bg-[#e4006c] shadow-[2px_2px_0_#0f0d5a] flex items-center justify-center gap-1.5 font-black cursor-pointer transition-all"
+                  onClick={(e) => {
+                    addToCart(product, undefined, undefined, 1, e.currentTarget);
+                    triggerConfetti(30);
+                  }}
+                  className="add-btn mt-3 w-full py-2.5 rounded-xl bg-[#0f0d5a] text-white font-title-md text-xs uppercase border-2 border-[#0f0d5a] hover:bg-[#e4006c] shadow-[2px_2px_0_#0f0d5a] flex items-center justify-center gap-1.5 font-black cursor-pointer transition-all hover:scale-102"
                   aria-label={`Add ${product.name} to cart`}
                 >
-                  <span className="material-symbols-outlined text-[16px]">add_shopping_cart</span>
+                  <span className="material-symbols-outlined text-[16px] cart-icon-wiggle">add_shopping_cart</span>
                   <span>ADD TO CART</span>
                 </button>
               </div>

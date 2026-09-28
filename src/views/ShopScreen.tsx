@@ -2,6 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { useCart } from '../context/CartContext';
 import { PRODUCTS, MOODS } from '../data/products';
 import { MarqueeTicker } from '../components/MarqueeTicker';
+import { CrazyFloatingStickers } from '../components/CrazyFloatingStickers';
 
 export const ShopScreen: React.FC = () => {
   const {
@@ -11,6 +12,7 @@ export const ShopScreen: React.FC = () => {
     isWishlisted,
     activeMoodFilter,
     setMoodFilter,
+    triggerConfetti,
   } = useCart();
 
   const [selectedCategory, setSelectedCategory] = useState<'all' | 'ankle' | 'crew' | 'noshow'>('all');
@@ -86,6 +88,9 @@ export const ShopScreen: React.FC = () => {
       {/* 3. HERO BILLBOARD */}
       <section className="w-full py-8 md:py-12 bg-[#FFFDF5] px-4 sm:px-8">
         <div className="max-w-7xl mx-auto bg-[#eeecff] rounded-3xl p-6 sm:p-10 relative overflow-hidden border-3 border-on-surface shadow-[6px_6px_0_#0f0d5a]">
+          {/* Crazy Animated Stickers Layer */}
+          <CrazyFloatingStickers />
+
           {/* Decorative Backdrop */}
           <div className="absolute -right-16 -top-16 w-80 h-80 rounded-full bg-[#fecf00]/30 blur-3xl pointer-events-none" />
           <div className="absolute -left-12 -bottom-12 w-72 h-72 rounded-full bg-[#e4006c]/20 blur-3xl pointer-events-none" />
@@ -286,10 +291,13 @@ export const ShopScreen: React.FC = () => {
               </span>
               <button
                 type="button"
-                onClick={() => setMoodFilter('all')}
-                className={`shrink-0 px-3.5 py-1.5 rounded-full font-black border-2 border-[#0f0d5a] font-body-md text-xs transition-all shadow-[1.5px_1.5px_0_#0f0d5a] cursor-pointer ${
+                onClick={() => {
+                  setMoodFilter('all');
+                  triggerConfetti(20);
+                }}
+                className={`shrink-0 px-3.5 py-1.5 rounded-full font-black border-2 border-[#0f0d5a] font-body-md text-xs transition-all shadow-[1.5px_1.5px_0_#0f0d5a] cursor-pointer hover:scale-105 active:scale-95 ${
                   activeMoodFilter === 'all'
-                    ? 'bg-[#ffe200] text-[#0f0d5a]'
+                    ? 'bg-[#ffe200] text-[#0f0d5a] shadow-[2px_2px_0_#0f0d5a]'
                     : 'bg-white text-[#0f0d5a] hover:bg-[#FFF7D6]'
                 }`}
               >
@@ -299,8 +307,11 @@ export const ShopScreen: React.FC = () => {
                 <button
                   key={mood.id}
                   type="button"
-                  onClick={() => setMoodFilter(mood.id)}
-                  className={`shrink-0 px-3.5 py-1.5 rounded-full border-2 border-[#0f0d5a] font-body-md text-xs font-bold transition-all shadow-[1.5px_1.5px_0_#0f0d5a] cursor-pointer ${
+                  onClick={() => {
+                    setMoodFilter(mood.id);
+                    triggerConfetti(30);
+                  }}
+                  className={`shrink-0 px-3.5 py-1.5 rounded-full border-2 border-[#0f0d5a] font-body-md text-xs font-bold transition-all shadow-[1.5px_1.5px_0_#0f0d5a] cursor-pointer hover:scale-105 active:scale-95 ${
                     activeMoodFilter === mood.id
                       ? 'bg-[#ffe200] text-[#0f0d5a] font-black shadow-[2px_2px_0_#0f0d5a]'
                       : 'bg-white text-[#0f0d5a] hover:bg-[#FFF7D6]'
@@ -423,6 +434,13 @@ export const ShopScreen: React.FC = () => {
                           src={product.image}
                           className="product-img w-full h-full object-contain mix-blend-multiply transition-transform duration-300"
                         />
+
+                        {/* Angry Toast Style Collectible Stamp Overlay on Hover */}
+                        <div className="absolute inset-0 pointer-events-none flex items-center justify-center z-15">
+                          <div className="opacity-0 scale-50 group-hover:opacity-100 group-hover:scale-100 group-hover:rotate-[-8deg] transition-all duration-300 transform bg-[#FFE200] text-[#0f0d5a] font-display-hero text-[11px] font-black uppercase px-3 py-1 rounded-xl border-2 border-[#0f0d5a] shadow-[3px_3px_0_#0f0d5a]">
+                            {product.category === 'ankle' ? '⚡ ANKLE HEAT' : product.category === 'noshow' ? '👀 GHOST DRIP' : '🔥 CREW SLAP'}
+                          </div>
+                        </div>
                       </div>
 
                       {/* Product Details */}
@@ -471,11 +489,14 @@ export const ShopScreen: React.FC = () => {
 
                       <button
                         type="button"
-                        onClick={(e) => addToCart(product, undefined, undefined, 1, e.currentTarget)}
-                        className="quick-add-btn fluid-btn h-10 px-4 rounded-full bg-[#e4006c] text-white font-title-md text-xs font-black border-2 border-[#0f0d5a] shadow-[2px_2px_0_#0f0d5a] hover:bg-[#b60055] flex items-center gap-1.5 cursor-pointer shrink-0 transition-transform"
+                        onClick={(e) => {
+                          addToCart(product, undefined, undefined, 1, e.currentTarget);
+                          triggerConfetti(30);
+                        }}
+                        className="quick-add-btn fluid-btn h-10 px-4 rounded-full bg-[#e4006c] text-white font-title-md text-xs font-black border-2 border-[#0f0d5a] shadow-[2px_2px_0_#0f0d5a] hover:bg-[#b60055] hover:shadow-[4px_4px_0_#0f0d5a] flex items-center gap-1.5 cursor-pointer shrink-0 transition-all hover:scale-105"
                         aria-label={`Add ${product.name} to cart`}
                       >
-                        <span className="material-symbols-outlined text-[17px]">
+                        <span className="material-symbols-outlined text-[17px] cart-icon-wiggle">
                           add_shopping_cart
                         </span>
                         <span>ADD</span>

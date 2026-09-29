@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mirchi Masala Crew Socks — Mojedaar</title>
+  <meta name="description" content="Cream Canvas · Pop Tikha Chilli Repeat · Spun from 85% Combed Cotton in Bandra, Bombay." />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Fredoka:wght@400;600;700&family=Rubik:ital,wght@0,400;0,600;0,800;1,700&display=swap" rel="stylesheet" />
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'on-surface': '#0f0d5a',
+            'primary': '#e4006c',
+            'secondary-container': '#ffe200',
+          },
+          fontFamily: {
+            display: ['"Archivo Black"', 'sans-serif'],
+            body: ['Rubik', 'Fredoka', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #FFFDF5;
+      color: #0f0d5a;
+      font-family: 'Rubik', sans-serif;
+    }
+    .font-display-hero {
+      font-family: 'Archivo Black', sans-serif;
+    }
+    .fluid-btn {
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .fluid-btn:hover {
+      transform: translate(-3px, -3px);
+      box-shadow: 6px 6px 0 #0f0d5a;
+    }
+    .fluid-btn:active {
+      transform: translate(2px, 2px);
+      box-shadow: 1px 1px 0 #0f0d5a;
+    }
+    .logo-blend-multiply {
+      mix-blend-mode: multiply;
+    }
+    @keyframes marquee {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
+    .animate-marquee-infinite {
+      display: flex;
+      width: max-content;
+      animation: marquee 16s linear infinite;
+    }
+  </style>
+</head>
+<body class="bg-[#FFFDF5] text-[#0f0d5a] antialiased">
+
+  <!-- MARQUEE RIBBON -->
+  <div class="w-full bg-[#E4006C] text-white border-y-2 border-[#0f0d5a] overflow-hidden select-none py-2 font-display-hero text-xs sm:text-sm tracking-widest uppercase">
+    <div class="animate-marquee-infinite flex items-center space-x-6">
+      <span>🌶️ HOT ITEM: 43 PEOPLE LOOKING AT THIS RIGHT NOW</span>
+      <span>★</span>
+      <span>FREE DELIVERY ON ORDERS ABOVE ₹699</span>
+      <span>★</span>
+      <span>EASY 7-DAY EXCHANGE POLICY</span>
+      <span>★</span>
+      <span>🌶️ HOT ITEM: 43 PEOPLE LOOKING AT THIS RIGHT NOW</span>
+      <span>★</span>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="sticky top-0 z-50 bg-[#FFFDF5] border-b-2 border-[#0f0d5a]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between">
+      <a href="home.html" class="flex items-center gap-2">
+        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuClLTm8jnIWvHhqQC2klUbOMmgI_bMnAwNoO_X0EfHpKy4qCnvuH1O7KdFR14dtXZIrq2_Nd3XyQDXaIHqovvDlELLEaNwy3wfGstursdzfZ915HdGtGH_ewcRISKuxL2HLton6e2rqbyRBlviKWpvHbmMhYxe2YK4Hty9zgK4ci88NMl32VizqmV14yVVDHT5Nngt99Y4FX8pwywWtzF6I-Cmnruo95PXsTWLwZealLGE-N-Lk2bbZJw1xUQKidDidLOw" alt="Mojedaar" class="h-10 sm:h-14 w-auto object-contain logo-blend-multiply" />
+      </a>
+      <nav class="hidden md:flex items-center gap-8 font-black uppercase text-sm">
+        <a href="home.html" class="font-display-hero hover:text-[#e4006c]">Home</a>
+        <a href="shop.html" class="font-display-hero hover:text-[#e4006c]">Shop</a>
+        <a href="home.html#about" class="font-display-hero hover:text-[#e4006c]">About</a>
+      </nav>
+      <div class="flex items-center gap-3">
+        <a href="cart.html" class="relative p-2.5 rounded-full border-2 border-[#0f0d5a] bg-white shadow-[3px_3px_0_#0f0d5a]">
+          <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+          <span id="cart-counter" class="absolute -top-1.5 -right-1.5 w-5 h-5 bg-[#E4006C] text-white rounded-full text-[10px] font-black flex items-center justify-center border border-[#0f0d5a]">
+            2
+          </span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- BREADCRUMBS -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-8 py-4 font-bold text-xs uppercase text-[#5c3f45] flex items-center gap-2">
+    <a href="home.html" class="hover:underline">Home</a>
+    <span>/</span>
+    <a href="shop.html" class="hover:underline">Shop</a>
+    <span>/</span>
+    <span class="text-[#0f0d5a]">Mirchi Masala Crew</span>
+  </div>
+
+  <!-- PRODUCT MAIN STAGE -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-8 pb-16">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+      
+      <!-- LEFT: INTERACTIVE IMAGE GALLERY -->
+      <div>
+        <!-- Main Large Image Container -->
+        <div id="main-image-box" class="relative w-full h-[360px] sm:h-[480px] bg-[#FFE800] rounded-3xl border-4 border-[#0f0d5a] shadow-[8px_8px_0_#0f0d5a] flex items-center justify-center overflow-hidden mb-4">
+          <span class="absolute top-4 left-4 px-3 py-1 bg-[#E4006C] text-white font-display-hero text-xs uppercase rounded-full border border-[#0f0d5a]">
+            NEW DROP 🔥
+          </span>
+          <img id="main-product-img" src="https://lh3.googleusercontent.com/aida/AEtjO1WSPn-D1m2AeSqGgdHfyrbl8xEkKIK3VLMPE0wAOoLJaTjxapl40ektkS3rKNysilVtWIRXaBtMU7jGUXKok_8I1aQAXhMS-w9MDo4d8jNmIjjvwSojg-6noNvKVk-UY5d_wOTSBAlVEe3p_O5-4WnBp3t5TibdSgcYdFAmlP3Be8D_9PAk3en28Y2cNCfgXwQvli4fOibyhZ1Ix3on5qF9uzK-L-KZJAuYwotwSX6TObSF7zusB85oKg8S" alt="Mirchi Masala" class="h-[80%] w-auto object-contain mix-blend-multiply transition-all duration-300" />
+        </div>
+
+        <!-- Thumbnails -->
+        <div class="grid grid-cols-4 gap-3">
+          <button onclick="switchImage(0, 'https://lh3.googleusercontent.com/aida/AEtjO1WSPn-D1m2AeSqGgdHfyrbl8xEkKIK3VLMPE0wAOoLJaTjxapl40ektkS3rKNysilVtWIRXaBtMU7jGUXKok_8I1aQAXhMS-w9MDo4d8jNmIjjvwSojg-6noNvKVk-UY5d_wOTSBAlVEe3p_O5-4WnBp3t5TibdSgcYdFAmlP3Be8D_9PAk3en28Y2cNCfgXwQvli4fOibyhZ1Ix3on5qF9uzK-L-KZJAuYwotwSX6TObSF7zusB85oKg8S', '#FFE800')" class="thumb-btn active h-20 sm:h-24 bg-[#FFE800] rounded-2xl border-3 border-[#0f0d5a] p-2 flex items-center justify-center shadow-[3px_3px_0_#0f0d5a]">
+            <img src="https://lh3.googleusercontent.com/aida/AEtjO1WSPn-D1m2AeSqGgdHfyrbl8xEkKIK3VLMPE0wAOoLJaTjxapl40ektkS3rKNysilVtWIRXaBtMU7jGUXKok_8I1aQAXhMS-w9MDo4d8jNmIjjvwSojg-6noNvKVk-UY5d_wOTSBAlVEe3p_O5-4WnBp3t5TibdSgcYdFAmlP3Be8D_9PAk3en28Y2cNCfgXwQvli4fOibyhZ1Ix3on5qF9uzK-L-KZJAuYwotwSX6TObSF7zusB85oKg8S" class="h-full w-auto object-contain mix-blend-multiply" />
+          </button>
+          <button onclick="switchImage(1, 'https://lh3.googleusercontent.com/aida/AEtjO1VZUhTOxyEYUWnA2dO0wR8-crLATAHIC3S-daQ7lwU-KBFAD1Dmrvs6kVdHxEbq2URULZMiH7YDWWDc4Z02VQUAn2A2E2Z4n1E5MtOijTFMb3wiY0aQlrIw74wSA3FmIg6kv8XJQGDfzZje5Wkh5lwrPOV05SeAHy0ekc2eMOnqRii5WC-mZ4HoWFPeOuxsRzqYCPfZ5GQvV7m5Cp25v6z7OR3QCrHW9wdSvW3U2T0a5CFKfbOslqFPz4Cl', '#EEDDFF')" class="thumb-btn h-20 sm:h-24 bg-[#EEDDFF] rounded-2xl border-2 border-[#0f0d5a] p-2 flex items-center justify-center">
+            <img src="https://lh3.googleusercontent.com/aida/AEtjO1VZUhTOxyEYUWnA2dO0wR8-crLATAHIC3S-daQ7lwU-KBFAD1Dmrvs6kVdHxEbq2URULZMiH7YDWWDc4Z02VQUAn2A2E2Z4n1E5MtOijTFMb3wiY0aQlrIw74wSA3FmIg6kv8XJQGDfzZje5Wkh5lwrPOV05SeAHy0ekc2eMOnqRii5WC-mZ4HoWFPeOuxsRzqYCPfZ5GQvV7m5Cp25v6z7OR3QCrHW9wdSvW3U2T0a5CFKfbOslqFPz4Cl" class="h-full w-full object-cover rounded-lg" />
+          </button>
+          <button onclick="switchImage(2, 'https://lh3.googleusercontent.com/aida/AEtjO1W-50KcgHJEb9fnVPnd7x4MWjqyo1pD0OCOWRHgr5qQjAaVZrliCb0Vt1D-KcHvvDyX7_Dv5580Ghewb3T9Yxbys6dfHXD07hVSABPeX6ZAMkclYKXi1yAU-MZNu5Bq_k3K2NAi7Nrdfvof0GWIBzvFVT3BzYFeQlcUVMUjAezVMWwRGQ2HVzIExvdBiWDZaJnfuFH-B-6OUsO6KZM2A4cjOBmlXmKFYfReo8lBu76vfFQW79EMGV7DMg9h', '#FFF7E8')" class="thumb-btn h-20 sm:h-24 bg-[#FFF7E8] rounded-2xl border-2 border-[#0f0d5a] p-2 flex items-center justify-center">
+            <img src="https://lh3.googleusercontent.com/aida/AEtjO1W-50KcgHJEb9fnVPnd7x4MWjqyo1pD0OCOWRHgr5qQjAaVZrliCb0Vt1D-KcHvvDyX7_Dv5580Ghewb3T9Yxbys6dfHXD07hVSABPeX6ZAMkclYKXi1yAU-MZNu5Bq_k3K2NAi7Nrdfvof0GWIBzvFVT3BzYFeQlcUVMUjAezVMWwRGQ2HVzIExvdBiWDZaJnfuFH-B-6OUsO6KZM2A4cjOBmlXmKFYfReo8lBu76vfFQW79EMGV7DMg9h" class="h-full w-full object-cover rounded-lg" />
+          </button>
+          <button onclick="switchImage(3, 'https://lh3.googleusercontent.com/aida/AEtjO1VVundHknRCmIklkQKVR_acpLD_EPomwLS38VAfSv2DBx2WeBTekQ5dGZ41TLxKEYsPq9UjABbiPV9ngJMdd2FJGoLDnvb5k_tRBUuaC2Egz7eL71Gor4Wv7-GCpm4lUQ09lM90hKjiex8sf4MlEjB5WrFEFEOdDEeUfyi_payb7xaRd3HQy-nHL6d9_X3AGj_yIdu3ksXFKm2wWgGzhK_X-5fAc-aipBaRKWmfua_1zidU5KLDUnApbWah', '#FFF7D6')" class="thumb-btn h-20 sm:h-24 bg-[#FFF7D6] rounded-2xl border-2 border-[#0f0d5a] p-2 flex items-center justify-center">
+            <img src="https://lh3.googleusercontent.com/aida/AEtjO1VVundHknRCmIklkQKVR_acpLD_EPomwLS38VAfSv2DBx2WeBTekQ5dGZ41TLxKEYsPq9UjABbiPV9ngJMdd2FJGoLDnvb5k_tRBUuaC2Egz7eL71Gor4Wv7-GCpm4lUQ09lM90hKjiex8sf4MlEjB5WrFEFEOdDEeUfyi_payb7xaRd3HQy-nHL6d9_X3AGj_yIdu3ksXFKm2wWgGzhK_X-5fAc-aipBaRKWmfua_1zidU5KLDUnApbWah" class="h-full w-auto object-contain mix-blend-multiply" />
+          </button>
+        </div>
+      </div>
+
+      <!-- RIGHT: PRODUCT BUYING INFO -->
+      <div>
+        <div class="flex items-center gap-2 mb-2">
+          <span class="px-3 py-1 bg-[#FFE54C] rounded-full font-display-hero text-[10px] uppercase border border-[#0f0d5a]">
+            FOODIE × DESI EDITION
+          </span>
+          <span class="text-xs font-bold text-[#5c3f45]">★ 4.9 (128 Customer Reviews)</span>
+        </div>
+
+        <h1 class="font-display-hero text-3xl sm:text-5xl uppercase tracking-tight leading-none mb-3">
+          MIRCHI MASALA
+        </h1>
+        <p class="text-sm text-[#5c3f45] mb-6 font-medium">
+          Cream Canvas · Pop Tikha Chilli Repeat · Spun on 200-needle Italian machinery with ultra-long staple Indian combed cotton.
+        </p>
+
+        <!-- Price block -->
+        <div class="flex items-baseline gap-3 p-4 bg-white rounded-2xl border-2 border-[#0f0d5a] shadow-[4px_4px_0_#0f0d5a] mb-6">
+          <span id="price-display" class="font-display-hero text-3xl sm:text-4xl text-[#0f0d5a]">₹449</span>
+          <span id="orig-price-display" class="text-base line-through text-gray-400">₹599</span>
+          <span class="px-2 py-0.5 bg-[#FFD8DE] text-[#e4006c] font-display-hero text-xs uppercase rounded-md">
+            25% OFF
+          </span>
+          <span class="ml-auto text-xs text-green-700 font-bold">Inclusive of all taxes</span>
+        </div>
+
+        <!-- Length Selector -->
+        <div class="mb-6">
+          <label class="block font-display-hero text-xs uppercase mb-2">SELECT SOCK CUT:</label>
+          <div class="grid grid-cols-3 gap-3">
+            <button onclick="setCut('ankle', 399, 499)" class="cut-btn p-3 rounded-2xl border-2 border-[#0f0d5a] bg-white text-center hover:bg-gray-50">
+              <span class="font-display-hero text-xs uppercase block">Ankle</span>
+              <span class="text-[11px] text-[#5c3f45]">₹399</span>
+            </button>
+            <button onclick="setCut('crew', 449, 599)" class="cut-btn active p-3 rounded-2xl border-2 border-[#0f0d5a] bg-[#FFE54C] text-center shadow-[3px_3px_0_#0f0d5a]">
+              <span class="font-display-hero text-xs uppercase block">Crew (Classic)</span>
+              <span class="text-[11px] text-[#5c3f45]">₹449</span>
+            </button>
+            <button onclick="setCut('boot', 499, 649)" class="cut-btn p-3 rounded-2xl border-2 border-[#0f0d5a] bg-white text-center hover:bg-gray-50">
+              <span class="font-display-hero text-xs uppercase block">Tall Boot</span>
+              <span class="text-[11px] text-[#5c3f45]">₹499</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Quantity & Add to Cart -->
+        <div class="flex items-center gap-4 mb-6">
+          <!-- Stepper -->
+          <div class="flex items-center border-2 border-[#0f0d5a] rounded-2xl bg-white shadow-[2px_2px_0_#0f0d5a] overflow-hidden">
+            <button onclick="updateQty(-1)" class="px-3 py-3 font-display-hero text-base hover:bg-gray-100">-</button>
+            <span id="qty-val" class="px-4 font-display-hero text-base">1</span>
+            <button onclick="updateQty(1)" class="px-3 py-3 font-display-hero text-base hover:bg-gray-100">+</button>
+          </div>
+          <!-- Add Button -->
+          <button onclick="addToBag()" class="fluid-btn flex-1 py-4 bg-[#e4006c] text-white font-display-hero text-sm uppercase rounded-2xl border-3 border-[#0f0d5a] shadow-[4px_4px_0_#0f0d5a]">
+            ADD TO BAG 🔥
+          </button>
+        </div>
+
+        <!-- PINCODE CHECKER -->
+        <div class="p-4 bg-[#FFF7D6] rounded-2xl border-2 border-[#0f0d5a] mb-6">
+          <label class="block font-display-hero text-xs uppercase mb-2">CHECK ESTIMATED DELIVERY TO YOUR CITY:</label>
+          <div class="flex gap-2">
+            <input id="pincode-input" type="text" maxlength="6" placeholder="Enter 6-digit Pincode (e.g. 400050)" class="flex-1 bg-white border-2 border-[#0f0d5a] rounded-xl px-3 py-2 text-xs font-bold uppercase focus:outline-none" />
+            <button onclick="checkPincode()" class="px-4 py-2 bg-[#0f0d5a] text-white font-display-hero text-xs uppercase rounded-xl">CHECK</button>
+          </div>
+          <p id="pincode-result" class="text-xs font-bold mt-2 text-green-700 hidden"></p>
+        </div>
+
+        <!-- ACCORDIONS -->
+        <div class="space-y-3">
+          <div class="border-2 border-[#0f0d5a] rounded-xl bg-white overflow-hidden">
+            <button onclick="toggleTab(this)" class="w-full p-3.5 text-left font-display-hero text-xs uppercase flex justify-between items-center">
+              <span>Fabric & Composition</span>
+              <span>+</span>
+            </button>
+            <div class="px-3.5 pb-3.5 text-xs text-[#5c3f45] hidden font-medium">
+              85% Combed Cotton, 12% Spandex, 3% Elastane. Spun with double-welt cuffs to guarantee zero slippage throughout the day.
+            </div>
+          </div>
+          <div class="border-2 border-[#0f0d5a] rounded-xl bg-white overflow-hidden">
+            <button onclick="toggleTab(this)" class="w-full p-3.5 text-left font-display-hero text-xs uppercase flex justify-between items-center">
+              <span>Care & Washing</span>
+              <span>+</span>
+            </button>
+            <div class="px-3.5 pb-3.5 text-xs text-[#5c3f45] hidden font-medium">
+              Machine wash cold (30°C) inside out. Do not bleach or iron. Tumble dry on low heat.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="bg-[#0f0d5a] text-white py-8 px-4 text-center text-xs">
+    <p>© 2026 Mojedaar Socks. Designed in Bandra, Bombay.</p>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+
+    let currentPrice = 449;
+    let qty = 1;
+    let cartTotal = 2;
+
+    function switchImage(index, url, bg) {
+      document.getElementById('main-product-img').src = url;
+      document.getElementById('main-image-box').style.backgroundColor = bg;
+      document.querySelectorAll('.thumb-btn').forEach(b => {
+        b.classList.remove('active', 'border-3', 'shadow-[3px_3px_0_#0f0d5a]');
+        b.classList.add('border-2');
+      });
+      event.currentTarget.classList.add('active', 'border-3', 'shadow-[3px_3px_0_#0f0d5a]');
+      event.currentTarget.classList.remove('border-2');
+    }
+
+    function setCut(type, price, orig) {
+      currentPrice = price;
+      document.getElementById('price-display').textContent = '₹' + price;
+      document.getElementById('orig-price-display').textContent = '₹' + orig;
+      document.querySelectorAll('.cut-btn').forEach(b => {
+        b.classList.remove('bg-[#FFE54C]', 'shadow-[3px_3px_0_#0f0d5a]');
+        b.classList.add('bg-white');
+      });
+      event.currentTarget.classList.remove('bg-white');
+      event.currentTarget.classList.add('bg-[#FFE54C]', 'shadow-[3px_3px_0_#0f0d5a]');
+    }
+
+    function updateQty(delta) {
+      qty = Math.max(1, qty + delta);
+      document.getElementById('qty-val').textContent = qty;
+    }
+
+    function checkPincode() {
+      const pin = document.getElementById('pincode-input').value.trim();
+      const res = document.getElementById('pincode-result');
+      if (pin.length === 6 && /^\d+$/.test(pin)) {
+        res.textContent = `⚡ Pincode ${pin} is serviceable! Dispatches within 24 hours. COD available.`;
+        res.classList.remove('hidden', 'text-red-600');
+        res.classList.add('text-green-700');
+      } else {
+        res.textContent = `❌ Please enter a valid 6-digit Indian pincode.`;
+        res.classList.remove('hidden', 'text-green-700');
+        res.classList.add('text-red-600');
+      }
+    }
+
+    function addToBag() {
+      cartTotal += qty;
+      document.getElementById('cart-counter').textContent = cartTotal;
+      confetti({ particleCount: 90, spread: 60, origin: { y: 0.6 } });
+      alert(`Added ${qty} pair(s) of Mirchi Masala to your cart! 🌶️`);
+    }
+
+    function toggleTab(btn) {
+      const content = btn.nextElementSibling;
+      const isHidden = content.classList.contains('hidden');
+      content.classList.toggle('hidden');
+      btn.querySelector('span:last-child').textContent = isHidden ? '-' : '+';
+    }
+  </script>
+</body>
+</html>

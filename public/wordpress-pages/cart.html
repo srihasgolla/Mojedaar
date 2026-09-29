@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Sock Bag — Mojedaar</title>
+  <meta name="description" content="Review your loud, funky cotton socks and proceed to fast checkout." />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Fredoka:wght@400;600;700&family=Rubik:ital,wght@0,400;0,600;0,800;1,700&display=swap" rel="stylesheet" />
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'on-surface': '#0f0d5a',
+            'primary': '#e4006c',
+            'secondary-container': '#ffe200',
+          },
+          fontFamily: {
+            display: ['"Archivo Black"', 'sans-serif'],
+            body: ['Rubik', 'Fredoka', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #FFFDF5;
+      color: #0f0d5a;
+      font-family: 'Rubik', sans-serif;
+    }
+    .font-display-hero {
+      font-family: 'Archivo Black', sans-serif;
+    }
+    .fluid-btn {
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .fluid-btn:hover {
+      transform: translate(-3px, -3px);
+      box-shadow: 6px 6px 0 #0f0d5a;
+    }
+    .fluid-btn:active {
+      transform: translate(2px, 2px);
+      box-shadow: 1px 1px 0 #0f0d5a;
+    }
+    .logo-blend-multiply {
+      mix-blend-mode: multiply;
+    }
+    @keyframes marquee {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
+    .animate-marquee-infinite {
+      display: flex;
+      width: max-content;
+      animation: marquee 16s linear infinite;
+    }
+  </style>
+</head>
+<body class="bg-[#FFFDF5] text-[#0f0d5a] antialiased">
+
+  <!-- MARQUEE RIBBON -->
+  <div class="w-full bg-[#FFE54C] text-[#0f0d5a] border-y-2 border-[#0f0d5a] overflow-hidden select-none py-2 font-display-hero text-xs sm:text-sm tracking-widest uppercase">
+    <div class="animate-marquee-infinite flex items-center space-x-6">
+      <span>🚀 EXPRESS DISPATCH TO ALL PINCODES</span>
+      <span>•</span>
+      <span>FREE SHIPPING APPLIES ABOVE ₹699</span>
+      <span>•</span>
+      <span>USE PROMO CODE: SOCKSY10 FOR 10% OFF</span>
+      <span>•</span>
+      <span>🚀 EXPRESS DISPATCH TO ALL PINCODES</span>
+      <span>•</span>
+      <span>FREE SHIPPING APPLIES ABOVE ₹699</span>
+      <span>•</span>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="sticky top-0 z-50 bg-[#FFFDF5] border-b-2 border-[#0f0d5a]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between">
+      <a href="home.html" class="flex items-center gap-2">
+        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuClLTm8jnIWvHhqQC2klUbOMmgI_bMnAwNoO_X0EfHpKy4qCnvuH1O7KdFR14dtXZIrq2_Nd3XyQDXaIHqovvDlELLEaNwy3wfGstursdzfZ915HdGtGH_ewcRISKuxL2HLton6e2rqbyRBlviKWpvHbmMhYxe2YK4Hty9zgK4ci88NMl32VizqmV14yVVDHT5Nngt99Y4FX8pwywWtzF6I-Cmnruo95PXsTWLwZealLGE-N-Lk2bbZJw1xUQKidDidLOw" alt="Mojedaar" class="h-10 sm:h-14 w-auto object-contain logo-blend-multiply" />
+      </a>
+      <nav class="hidden md:flex items-center gap-8 font-black uppercase text-sm">
+        <a href="home.html" class="font-display-hero hover:text-[#e4006c]">Home</a>
+        <a href="shop.html" class="font-display-hero hover:text-[#e4006c]">Shop</a>
+        <a href="home.html#about" class="font-display-hero hover:text-[#e4006c]">About</a>
+      </nav>
+      <div class="flex items-center gap-2">
+        <a href="shop.html" class="px-4 py-2 rounded-full border-2 border-[#0f0d5a] bg-white font-display-hero text-xs uppercase shadow-[2px_2px_0_#0f0d5a]">
+          ← Continue Shopping
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- CART PAGE CONTENT -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-8 py-10">
+    <div class="mb-8">
+      <h1 class="font-display-hero text-3xl sm:text-5xl uppercase tracking-tight text-[#0A0744]">
+        YOUR SOCK LOOT BAG (<span id="cart-item-count">2</span>)
+      </h1>
+      <p class="text-sm text-[#5c3f45] mt-1 font-medium">Review your items before we ship them from Bombay.</p>
+    </div>
+
+    <!-- FREE SHIPPING PROGRESS -->
+    <div class="mb-8 p-5 bg-[#FFE54C] rounded-2xl border-3 border-[#0f0d5a] shadow-[4px_4px_0_#0f0d5a]">
+      <div class="flex items-center justify-between mb-2">
+        <span class="font-display-hero text-xs sm:text-sm uppercase text-[#0f0d5a]" id="shipping-progress-text">
+          🎉 YOU'VE UNLOCKED FREE SHIPPING!
+        </span>
+        <span class="text-xs font-black uppercase text-[#0f0d5a]">FREE OVER ₹699</span>
+      </div>
+      <div class="w-full bg-white h-3.5 rounded-full border-2 border-[#0f0d5a] overflow-hidden p-0.5">
+        <div id="shipping-progress-bar" class="bg-[#E4006C] h-full rounded-full transition-all duration-300" style="width: 100%;"></div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+      <!-- CART ITEMS LIST (COL 1 & 2) -->
+      <div class="lg:col-span-2 space-y-4" id="cart-items-container">
+        <!-- Injected via JavaScript -->
+      </div>
+
+      <!-- ORDER SUMMARY (COL 3) -->
+      <div class="p-6 bg-white rounded-3xl border-3 border-[#0f0d5a] shadow-[6px_6px_0_#0f0d5a]">
+        <h2 class="font-display-hero text-xl uppercase mb-4 text-[#0f0d5a]">ORDER SUMMARY</h2>
+
+        <!-- Promo Code Input -->
+        <div class="mb-6">
+          <label class="block font-display-hero text-xs uppercase mb-2">HAVE A PROMO CODE?</label>
+          <div class="flex gap-2">
+            <input id="coupon-input" type="text" value="SOCKSY10" placeholder="e.g. SOCKSY10" class="flex-1 bg-[#FFFDF5] border-2 border-[#0f0d5a] rounded-xl px-3 py-2 text-xs font-bold uppercase focus:outline-none" />
+            <button onclick="applyCoupon()" class="px-4 py-2 bg-[#0f0d5a] text-white font-display-hero text-xs uppercase rounded-xl hover:bg-[#e4006c]">
+              APPLY
+            </button>
+          </div>
+          <p id="coupon-msg" class="text-xs font-bold mt-1 text-green-700">Code SOCKSY10 applied (10% off)!</p>
+        </div>
+
+        <div class="space-y-3 text-sm font-medium border-t border-b border-gray-200 py-4 mb-4">
+          <div class="flex justify-between">
+            <span class="text-[#5c3f45]">Subtotal</span>
+            <span class="font-bold text-[#0f0d5a]" id="subtotal-val">₹898</span>
+          </div>
+          <div class="flex justify-between text-green-700 font-bold">
+            <span>Discount (Promo)</span>
+            <span id="discount-val">-₹90</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-[#5c3f45]">Delivery Shipping</span>
+            <span class="font-bold text-green-700" id="shipping-val">FREE</span>
+          </div>
+        </div>
+
+        <div class="flex justify-between items-baseline mb-6">
+          <span class="font-display-hero text-lg uppercase text-[#0f0d5a]">GRAND TOTAL</span>
+          <span class="font-display-hero text-3xl text-[#0f0d5a]" id="total-val">₹808</span>
+        </div>
+
+        <button onclick="openCheckout()" class="fluid-btn w-full py-4 bg-[#e4006c] text-white font-display-hero text-base uppercase rounded-2xl border-3 border-[#0f0d5a] shadow-[4px_4px_0_#0f0d5a] flex items-center justify-center gap-2">
+          <span>PROCEED TO CHECKOUT</span>
+          <span>→</span>
+        </button>
+
+        <p class="text-center text-[11px] text-[#5c3f45] mt-3 font-medium">
+          🔒 256-bit encrypted secure checkout. Cash on Delivery supported.
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <!-- CHECKOUT MODAL -->
+  <div id="checkout-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+    <div class="bg-white rounded-3xl border-4 border-[#0f0d5a] shadow-[10px_10px_0_#0f0d5a] w-full max-w-lg p-6 relative">
+      <button onclick="closeCheckout()" class="absolute top-4 right-4 p-2 font-display-hero text-xl hover:text-[#e4006c]">✕</button>
+      
+      <div class="mb-4">
+        <span class="px-3 py-1 bg-[#FFE54C] rounded-full font-display-hero text-[10px] uppercase border border-[#0f0d5a]">
+          FAST DISPATCH
+        </span>
+        <h2 class="font-display-hero text-2xl uppercase mt-2">COMPLETE YOUR ORDER</h2>
+      </div>
+
+      <form onsubmit="handlePlaceOrder(event)" class="space-y-3">
+        <div>
+          <label class="block text-xs font-bold uppercase mb-1">Full Name</label>
+          <input required type="text" placeholder="e.g. Rahul Sharma" class="w-full bg-[#FFFDF5] border-2 border-[#0f0d5a] rounded-xl px-3 py-2 text-xs font-bold" />
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase mb-1">Phone Number (For OTP / Delivery)</label>
+          <input required type="tel" placeholder="+91 98765 43210" class="w-full bg-[#FFFDF5] border-2 border-[#0f0d5a] rounded-xl px-3 py-2 text-xs font-bold" />
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase mb-1">Shipping Address</label>
+          <textarea required rows="2" placeholder="House no, Street, Landmark, City & Pincode" class="w-full bg-[#FFFDF5] border-2 border-[#0f0d5a] rounded-xl px-3 py-2 text-xs font-bold"></textarea>
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase mb-1">Payment Method</label>
+          <div class="grid grid-cols-2 gap-2 text-xs font-bold">
+            <label class="flex items-center gap-2 p-2 border-2 border-[#0f0d5a] rounded-xl bg-[#FFE54C] cursor-pointer">
+              <input type="radio" name="pay" checked />
+              <span>UPI / QR / GPay</span>
+            </label>
+            <label class="flex items-center gap-2 p-2 border-2 border-[#0f0d5a] rounded-xl bg-white cursor-pointer">
+              <input type="radio" name="pay" />
+              <span>Cash on Delivery</span>
+            </label>
+          </div>
+        </div>
+
+        <button type="submit" class="fluid-btn w-full py-3.5 bg-[#00A86B] text-white font-display-hero text-sm uppercase rounded-2xl border-3 border-[#0f0d5a] shadow-[4px_4px_0_#0f0d5a] mt-4">
+          PAY ₹808 & CONFIRM ORDER 🎉
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <footer class="bg-[#0f0d5a] text-white py-8 px-4 text-center text-xs mt-16">
+    <p>© 2026 Mojedaar Socks. Designed in Bandra, Bombay.</p>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+
+    let cartItems = [
+      {
+        id: 1,
+        name: 'Mirchi Masala Crew Socks',
+        cut: 'Crew (Classic)',
+        price: 449,
+        origPrice: 599,
+        qty: 1,
+        image: 'https://lh3.googleusercontent.com/aida/AEtjO1WSPn-D1m2AeSqGgdHfyrbl8xEkKIK3VLMPE0wAOoLJaTjxapl40ektkS3rKNysilVtWIRXaBtMU7jGUXKok_8I1aQAXhMS-w9MDo4d8jNmIjjvwSojg-6noNvKVk-UY5d_wOTSBAlVEe3p_O5-4WnBp3t5TibdSgcYdFAmlP3Be8D_9PAk3en28Y2cNCfgXwQvli4fOibyhZ1Ix3on5qF9uzK-L-KZJAuYwotwSX6TObSF7zusB85oKg8S',
+        bgColor: '#FFE800'
+      },
+      {
+        id: 2,
+        name: 'Bijli Neon Stripes',
+        cut: 'Crew (Classic)',
+        price: 449,
+        origPrice: 599,
+        qty: 1,
+        image: 'https://lh3.googleusercontent.com/aida/AEtjO1XvuW9yq7jMmFoSw7lmCuRJx5okhK32tWbFQs-fHvufd18wHWSRQFTnvVb7yGU3FzYW3lpIUze4rtEqxfeinpOzCRXQa6nhefqIHMuxKp-VhQlu1IrGVjlh2lcetewLfHyikIOf3Huw4fDYh3CSZFqYEdCRpNsIWLG7n_99RgMGUCWbOGszn6Rq3Zqp0LstakP1aa2Xzo4_6_p89QqHLOeBs4ZJ7d42ov8MSOHKNd-WmkrLqdJv7AbIuoRl',
+        bgColor: '#FFF7E8'
+      }
+    ];
+
+    let discountPercent = 0.10;
+
+    function renderCart() {
+      const container = document.getElementById('cart-items-container');
+      const totalCount = cartItems.reduce((acc, item) => acc + item.qty, 0);
+      document.getElementById('cart-item-count').textContent = totalCount;
+
+      if (cartItems.length === 0) {
+        container.innerHTML = `
+          <div class="p-12 text-center bg-white rounded-3xl border-3 border-[#0f0d5a] shadow-[4px_4px_0_#0f0d5a]">
+            <span class="text-5xl block mb-3">🧦</span>
+            <h3 class="font-display-hero text-2xl uppercase mb-2">YOUR BAG IS EMPTY!</h3>
+            <p class="text-sm text-[#5c3f45] mb-6">Your feet deserve some color. Go pick a pair!</p>
+            <a href="shop.html" class="fluid-btn px-6 py-3 bg-[#e4006c] text-white font-display-hero text-xs uppercase rounded-full border-2 border-[#0f0d5a]">
+              EXPLORE SHOP
+            </a>
+          </div>
+        `;
+        updateTotals(0);
+        return;
+      }
+
+      container.innerHTML = cartItems.map(item => `
+        <div class="p-4 bg-white rounded-2xl border-3 border-[#0f0d5a] shadow-[4px_4px_0_#0f0d5a] flex items-center justify-between gap-4">
+          <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-xl border-2 border-[#0f0d5a] p-2 flex items-center justify-center shrink-0" style="background-color: ${item.bgColor};">
+            <img src="${item.image}" alt="${item.name}" class="h-full w-auto object-contain mix-blend-multiply" />
+          </div>
+          <div class="flex-1 min-w-0">
+            <h3 class="font-display-hero text-sm sm:text-base uppercase truncate text-[#0f0d5a]">${item.name}</h3>
+            <p class="text-xs text-[#5c3f45] mb-2 font-bold">${item.cut}</p>
+            <div class="flex items-baseline gap-2">
+              <span class="font-display-hero text-base text-[#0f0d5a]">₹${item.price * item.qty}</span>
+              <span class="text-xs text-gray-400 line-through">₹${item.origPrice * item.qty}</span>
+            </div>
+          </div>
+          <div class="flex flex-col sm:flex-row items-center gap-3">
+            <div class="flex items-center border-2 border-[#0f0d5a] rounded-xl overflow-hidden bg-[#FFFDF5]">
+              <button onclick="changeQty(${item.id}, -1)" class="px-2.5 py-1 font-display-hero text-xs hover:bg-gray-200">-</button>
+              <span class="px-3 font-display-hero text-xs">${item.qty}</span>
+              <button onclick="changeQty(${item.id}, 1)" class="px-2.5 py-1 font-display-hero text-xs hover:bg-gray-200">+</button>
+            </div>
+            <button onclick="removeItem(${item.id})" class="text-xs font-bold text-red-500 hover:text-red-700">Remove</button>
+          </div>
+        </div>
+      `).join('');
+
+      const rawSubtotal = cartItems.reduce((acc, item) => acc + (item.price * item.qty), 0);
+      updateTotals(rawSubtotal);
+    }
+
+    function updateTotals(subtotal) {
+      document.getElementById('subtotal-val').textContent = '₹' + subtotal;
+      const discount = Math.round(subtotal * discountPercent);
+      document.getElementById('discount-val').textContent = '-₹' + discount;
+      
+      const freeShipThreshold = 699;
+      const progressPct = Math.min(100, Math.round((subtotal / freeShipThreshold) * 100));
+      document.getElementById('shipping-progress-bar').style.width = progressPct + '%';
+      
+      if (subtotal >= freeShipThreshold || subtotal === 0) {
+        document.getElementById('shipping-val').textContent = 'FREE';
+        document.getElementById('shipping-progress-text').textContent = "🎉 YOU'VE UNLOCKED FREE SHIPPING!";
+      } else {
+        const diff = freeShipThreshold - subtotal;
+        document.getElementById('shipping-val').textContent = '₹50';
+        document.getElementById('shipping-progress-text').textContent = `ADD ₹${diff} MORE FOR FREE SHIPPING!`;
+      }
+
+      const shippingFee = (subtotal >= freeShipThreshold || subtotal === 0) ? 0 : 50;
+      const grandTotal = Math.max(0, subtotal - discount + shippingFee);
+      document.getElementById('total-val').textContent = '₹' + grandTotal;
+    }
+
+    function changeQty(id, delta) {
+      const it = cartItems.find(i => i.id === id);
+      if (it) {
+        it.qty += delta;
+        if (it.qty <= 0) {
+          cartItems = cartItems.filter(i => i.id !== id);
+        }
+      }
+      renderCart();
+    }
+
+    function removeItem(id) {
+      cartItems = cartItems.filter(i => i.id !== id);
+      renderCart();
+    }
+
+    function applyCoupon() {
+      const val = document.getElementById('coupon-input').value.trim().toUpperCase();
+      const msg = document.getElementById('coupon-msg');
+      if (val === 'SOCKSY10') {
+        discountPercent = 0.10;
+        msg.textContent = 'Code SOCKSY10 applied (10% off)!';
+        msg.classList.remove('text-red-600');
+        msg.classList.add('text-green-700');
+      } else if (val === 'BOMBAY20') {
+        discountPercent = 0.20;
+        msg.textContent = 'Mega Code BOMBAY20 applied (20% off)! 🎉';
+        msg.classList.remove('text-red-600');
+        msg.classList.add('text-green-700');
+      } else {
+        msg.textContent = 'Invalid promo code. Try SOCKSY10!';
+        msg.classList.remove('text-green-700');
+        msg.classList.add('text-red-600');
+      }
+      const rawSubtotal = cartItems.reduce((acc, item) => acc + (item.price * item.qty), 0);
+      updateTotals(rawSubtotal);
+    }
+
+    function openCheckout() {
+      document.getElementById('checkout-modal').classList.remove('hidden');
+    }
+
+    function closeCheckout() {
+      document.getElementById('checkout-modal').classList.add('hidden');
+    }
+
+    function handlePlaceOrder(e) {
+      e.preventDefault();
+      closeCheckout();
+      confetti({ particleCount: 150, spread: 80, origin: { y: 0.5 } });
+      alert("ORDER CONFIRMED! 🚀 Thank you for shopping with Mojedaar. You'll receive tracking on WhatsApp & SMS shortly!");
+      cartItems = [];
+      renderCart();
+    }
+
+    renderCart();
+  </script>
+</body>
+</html>

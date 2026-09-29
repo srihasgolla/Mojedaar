@@ -109,6 +109,15 @@ export const Footer: React.FC = () => {
             >
               No-show Loafers
             </button>
+            <a
+              href="/wordpress-pages/index.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-left text-sm font-bold text-[#FFE54C] hover:underline transition-colors flex items-center gap-1.5"
+            >
+              <span>WordPress HTML Exporter</span>
+              <span className="text-[10px] bg-[#E4006C] text-white px-1.5 py-0.5 rounded font-black">NEW</span>
+            </a>
           </div>
 
           {/* Col 2 */}

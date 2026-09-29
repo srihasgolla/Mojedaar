@@ -62,6 +62,18 @@ export const Header: React.FC = () => {
 
         {/* Right Utility Action Circles */}
         <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+          {/* WordPress HTML Export Button */}
+          <a
+            href="/wordpress-pages/index.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border-2 border-on-surface bg-[#E4006C] text-white font-display-hero text-xs uppercase shadow-[2px_2px_0_#0f0d5a] hover:bg-[#c9005f] hover:-translate-y-0.5 transition-all"
+            title="Export full HTML for WordPress"
+          >
+            <span>WordPress HTML</span>
+            <span className="text-[10px] bg-[#FFE54C] text-[#0f0d5a] px-1.5 py-0.2 rounded-full font-black">Export</span>
+          </a>
+
           {/* 1: Search Button */}
           <button
             aria-label="Search socks"
